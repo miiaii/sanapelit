@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LÖYDÄ SANA</title>
+    <link rel="stylesheet" href="./css/searchWord.css">
+</head>
+<body>
+    <div class="grid-container">
+        
+          <nav class="navbar">
+            <div class="branding">
+                <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
+            </div>
+            <!--Hamburger-->
+            <label for="input-hamburger" class="hamburger"></label>
+            <input type="checkbox" id="input-hamburger" hidden>
+            <ul class="menu">
+                <!--TOPICS-->
+                <li class="has-dropdown">
+                    <a href="#" class="menu-link" id="menuTopics">PELIT
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#" class="menu-link" id="allWords">LÖYDÄ SANA</a></li>
+                        <li><a href="#" class="menu-link" id="4letterWords">ARVAA SANA</a></li>               
+                    </ul>
+                </li>
+
+                <!--SAVED WORDS-->
+                <li><a href="./tallennetut.html" class="menu-link">SAVED WORDS</a></li>
+
+                <!--SETTINGS-->
+                <li class="has-dropdown">
+                    <a href="#" class="menu-link">SETTINGS
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="submenu" id="menuSettings">
+                        <select id="theme-selector"> 
+                          <option value="light">Light mode       </option>
+                          <option value="dark">Dark mode         </option>
+                        </select>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <header id="header">
+           <div id="topArea">
+              <button class="button" id="infoBtn">
+               PISTEET
+               </button>
+              <div id="counter">
+               <p>LÖYDETTY: <span id="score">0</span></p>
+              </div>
+                 <div id="controls"> <!--uusi peli button-->
+     <button class="button" id="startGameBtn">UUSI PELI</button>
+   </div>
+          </div>
+        </header>
+        <main id="main-container">
+            <div id="gameArea">
+                <div id="gameContainer">
+                  <div id="gameBoard">
+                    <!--js peliruudukko-->
+                  </div>
+                  <div id="wordList">
+                    <h4>ETSI NÄMÄ SANAT:</h4>
+                    <ul id="wordsToFind">
+                      <!--js sanalista -->
+                    </ul>
+                  </div>
+                </div>
+
+             
+              </div>
+
+        <div id="notificationContainer"> <!-- ilmoitukset; +1 sana löydetty -->
+        </div>
+        <div id="gameOverModal" class="modal"> <!--ilmoituslaatikko; kaikki sanat löydetty -->
+            <div class="modal-content">
+                <h4>HIENOA, LÖYSIT KAIKKI SANAT!</h4>
+                <ul id="wordsModal"></ul>
+                <button id="yesButton">UUSI PELI</button>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <script src="./js/searchWord.js" defer></script>
+</body>
+</html>
