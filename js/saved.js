@@ -1,11 +1,39 @@
 // ***HAMBURGER-MENU***
 
-//open and close menu when hamburger icon is clicked
 const hamburger = document.querySelector(".hamburger");
-hamburger.addEventListener('click', function() {
-  this.classList.toggle("close");
-
+hamburger.addEventListener('click', function(){
+    this.classList.toggle("close");
+    
 })
+
+//sub-menu
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdownLinks = document.querySelectorAll(".has-dropdown > .menu-link");
+
+  dropdownLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault(); // Estetään oletuksena oleva linkin toiminta
+
+      const submenu = link.nextElementSibling; // Alavalikko (submenu)
+      if (submenu) {
+        // Tarkistetaan, onko alavalikko jo näkyvissä
+        const isOpen = submenu.classList.contains("active");
+
+        // Suljetaan kaikki muut alavalikot
+        document.querySelectorAll(".submenu.active").forEach((openSubmenu) => {
+          openSubmenu.classList.remove("active");
+        });
+
+        // Asetetaan valitun alavalikon tila (auki/suljettu)
+        if (!isOpen) {
+          submenu.classList.add("active");
+        } else {
+          submenu.classList.remove("active");
+        }
+      }
+    });
+  });
+});
 
 
 // ***THEME***
