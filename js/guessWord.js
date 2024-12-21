@@ -181,24 +181,41 @@ const sixLetterWords = dictionary.filter(word => word.length === 6);
 // Elementti, johon asetetaan valitun aiheen nimi
 const aiheOtsikko = document.querySelector('.aiheOtsikko h3');
 
-// Add event listeners for the menu items
+// Add event listener for the select element
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('allWords').addEventListener('click', () => {
-    updateDictionary(allLetterWords, "All Words");
-  });
-  document.getElementById('4letterWords').addEventListener('click', () => {
-    updateDictionary(fourLetterWords, "4 Letter Words");
-  });
-  document.getElementById('5letterWords').addEventListener('click', () => {
-    updateDictionary(fiveLetterWords, "5 Letter Words");
-  });
-  document.getElementById('6letterWords').addEventListener('click', () => {
-    updateDictionary(sixLetterWords, "6 Letter Words");
+  const topicsBtn = document.getElementById('topicsBtn');
+
+  topicsBtn.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+
+    switch (selectedValue) {
+      case "allWords":
+        updateDictionary(allLetterWords, "Kaikki sanat");
+        break;
+      case "four":
+        updateDictionary(fourLetterWords, "4 kirjainta");
+        break;
+      case "five":
+        updateDictionary(fiveLetterWords, "5 kirjainta");
+        break;
+      case "six":
+        updateDictionary(sixLetterWords, "6 kirjainta");
+        break;
+      default:
+        console.error("Tuntematon valinta");
+    }
   });
 
   // Initialize the game on page load with full dictionary by default
   window.onload = () => newGame(allLetterWords, "All Words");
-});
+  });
+
+  // Function to update the game with the new word set and update the title
+  function updateDictionary(filteredWords, topicName) {
+    currentWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
+    aiheOtsikko.textContent = ` ${topicName}`; // Update aiheOtsikko title
+    newGame(filteredWords, topicName); // Start a new game with the chosen topic
+  }
 
 // Function to update the game with the new word set and update the title
 function updateDictionary(filteredWords, topicName) {
