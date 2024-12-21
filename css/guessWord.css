@@ -1,9 +1,11 @@
 :root{
     box-sizing: border-box;
-    --primary: #333;
-    --hover-color: rgb(255, 196, 1);
+    --primary: rgb(24, 103, 130);
+    --hover-color: rgb(9, 255, 206);
     --dark: #1c2022;
     --light: #fff;
+    font-size: 18px;
+    --bg-light:rgba(24, 103, 130, 0.5);
 }
 
 *, *::after, *::before{
@@ -12,12 +14,49 @@
     padding: 0;
 }
 
-body{
-    width: 100%;
-    height: 100%;
+/***THEMES***/
+
+
+/*Light mode*/
+body:has(option[value="light"]:checked){
+    --background-color: #fff;
+    --text-color: black;
+    --box-color: #fff;
+    --bubble-color: #fff;
+    --button-color: rgb(227, 228, 229);
+    --shadow-color:rgba(0,0,0,1);
+  }
+  
+  /*Dark mode*/
+  body:has(option[value="dark"]:checked){
+    --background-color: black;
+    --text-color: #e2e2e2;
+    --box-color: #fff;
+    --bubble-color: #333;
+    --button-color: rgba(103, 196, 227, 0.753);
+    --shadow-color: rgba(192,192,192,0.7);
+    
+  }
+  
+  
+  select{
+    left:0;
+    margin: 0em 1em;
+    padding:15px;
+    background-color:FFFFF;
+    border-radius: 0.5em;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+
+  
+html, body{
+    width: 100vw;
+    height: 100vh;
     margin: 0;
-    overflow-x: hidden;
-    background-color: var(--background-color);
+    overflow: hidden;
+    background-color: var(--background-color) ;
     color: var(--text-color);
 }
 
@@ -93,53 +132,6 @@ body{
 }
 
 
-/***THEMES***/
-
-
-/*Light mode*/
-body:has(option[value="light"]:checked){
-  --background-color: #fff;
-  --text-color: black;
-  --box-color: #fff;
-  --bubble-color: #fff;
-  --button-color: #fff;
-  --shadow-color:rgba(0,0,0,1);
-}
-
-/*Dark mode*/
-body:has(option[value="dark"]:checked){
-  --background-color: black;
-  --text-color: #fff;
-  --box-color: lightgray;
-  --bubble-color: #333;
-  --button-color: #333;
-  --shadow-color: rgba(192,192,192,0.7);
-  
-}
-
-/*Sepia mode*/
-body:has(option[value="sepia"]:checked){
-  --background-color: #b9a386;
-  --text-color: black;
-  --box-color: #e8d3bdd8;
-  --bubble-color: #e8d3bdd8;
-  --button-color: #D2B48C;
-  --shadow-color:black;
-}
-
-
-select{
-  left:0;
-  margin: 0em 1em;
-  padding:10px;
-  background-color:FFFFF;
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
-  border: 0.2em solid var(--shadow-color);
-  border-radius: 0.5em;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
 
 /* GRID AREAS*/
 .content{
@@ -174,16 +166,6 @@ grid-auto-rows: minmax(50px, auto);
 
 }   
 
-.navbar{
-    grid-area: navbar;
-    background-color: var(--primary);
-    box-shadow: 0px 0px 5px 0.5px var(--shadow-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em 1em 0.5em 1.5em;
-    border-bottom:1px solid var(--shadow-color);
-}
 
 
 .aiheOtsikko{
@@ -236,8 +218,20 @@ grid-auto-rows: minmax(50px, auto);
 
 /* MENU */
 
+.navbar{
+    grid-area: navbar;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0em 1em 0em 1.5em;
+    border-bottom:1px solid black ;
+}
+
+/* MENU */
+
 .branding-logo{
-    color: white;
+    color: var(--box-color);
     font-size: calc(1rem + 1vw);
     text-decoration: none;
 }
@@ -255,7 +249,7 @@ grid-auto-rows: minmax(50px, auto);
 .menu li a{
     display: block;
     text-decoration: none;
-    color: white;
+    color: var(--box-color);
     padding: 1em 1.5em;
     font-size: 1.2rem;
 }
@@ -290,7 +284,7 @@ grid-auto-rows: minmax(50px, auto);
 .submenu {
     position: absolute;
     right: 0;  /* right value 0, right side is on same level than parent */
-    background-color: #2e2e2e;
+    background-color: var(--primary);
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
     white-space: nowrap; /* Disable line breaks; text on one row*/
     padding: 0.7em 0; /*padding vertical and horizontal*/
@@ -308,8 +302,8 @@ grid-auto-rows: minmax(50px, auto);
 
 
 .submenu > li > a {
-    padding: 0.7em 1.5em; /*padding vertical and horizontal (text)*/
-    color: white;
+    padding: 1em 1.5em; /*padding vertical and horizontal (text)*/
+    color: var(--box-color);
     text-decoration: none;
     font-size: 1.1rem;
 }
@@ -317,8 +311,7 @@ grid-auto-rows: minmax(50px, auto);
 .menu > li:hover>a, .submenu > li:hover>a {
     background-color: rgba(139, 139, 139, 0.2); /* hover nav links & submenu links; lighter background color */
     color: var(--hover-color);
-    font-style: italic;
-    box-shadow:inset 0px 0px 10px 5px rgba(0, 0, 0, 0.7);
+    box-shadow:inset 0px 0px 10px 5px var(--hover-color);
 }
 
 
@@ -503,18 +496,18 @@ grid-auto-rows: minmax(50px, auto);
 @media screen and (max-width: 700px) {
     .navbar{
         position: relative;
-        padding: 2em;
+        padding: 0.6em;
     }
 
     .menu{
         flex-flow: column;
         position: absolute;
-        top: 5em;
+        top: 2.7em;
         left: 0;
         right: 0;
         height: fit-content;
         padding: 1.5em 0em 1.5em 0em;
-        background-color: #333;
+        background-color: var(--primary);
         border: none;
         box-shadow: 0px 0px 10px 0.5px #000;
         /*for close/open menu from hamburger icon*/
@@ -526,13 +519,21 @@ grid-auto-rows: minmax(50px, auto);
 
 }
 
+
+/* Näytetään alavalikko, kun sillä on luokka "active" */
+.submenu.active {
+  display: block;
+}
+
     .submenu {
+      display:none;
         left: 0;  /* left side is on same level than parent */
         padding: 1em 0; /*padding vertical and horizontal*/
         border-left: 2px solid rgba(0, 0, 0, 0.2);
         border-right: 2px solid rgba(0, 0, 0, 0.2);
         transition: 200ms transform cubic-bezier(0.36, 0.4, 0.42, 1.48) 200ms,
         100ms opacity ease-in-out ;
+        color: var(--box-color);
     }
 
     .menu > li:hover > a + .submenu {
@@ -542,7 +543,7 @@ grid-auto-rows: minmax(50px, auto);
 
     .submenu > li > a, .menu > li > a {
         padding: 0.8em 1.5em; /*padding vertical and horizontal (text)*/
-        color: white;
+        color: var(--box-color);
         text-decoration: none;
         font-size: 1.3em;
     }
@@ -553,7 +554,7 @@ grid-auto-rows: minmax(50px, auto);
         width: 2em;
         height: 0.25em;
         display: block;
-        background-color: var(--light);
+        background-color: var(--box-color);
         position: relative;
         cursor: pointer;
         transition: 0.2s transform ease-in-out;
