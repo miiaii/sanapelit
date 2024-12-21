@@ -462,7 +462,14 @@ header{
 
 }
 
+
+/* Näytetään alavalikko, kun sillä on luokka "active" */
+.submenu.active {
+  display: block;
+}
+
     .submenu {
+      display:none;
         left: 0;  /* left side is on same level than parent */
         padding: 1em 0; /*padding vertical and horizontal*/
         border-left: 2px solid rgba(0, 0, 0, 0.2);
