@@ -136,103 +136,6 @@ header{
     font-weight: bold;
 }
 
-/* MENU */
-
-.navbar{
-    grid-area: navbar;
-    background-color: var(--primary);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0em 1em 0em 1.5em;
-    border-bottom:1px solid black ;
-}
-
-/* MENU */
-
-.branding-logo{
-    color: var(--box-color);
-    font-size: calc(1rem + 1vw);
-    text-decoration: none;
-}
-
-.menu{
-    display: flex;
-    flex-direction: row;
-
-}
-
-.menu li{
-    list-style: none;
-}
-
-.menu li a{
-    display: block;
-    text-decoration: none;
-    color: var(--box-color);
-    padding: 1em 1.5em;
-    font-size: 1.2rem;
-}
-
-/*MENU-ARROWS*/
-
-.arrow{
-    width: 0.5em;
-    height: 0.5em;
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: -0.25em; /*getting it really middle with text*/
-    border-left: 0.15em solid currentColor;
-    border-bottom: 0.15em solid currentColor;
-    transform: rotate(-45deg);
-    transition: transform 150ms ease-in-out; /*smooth animation*/
-    font-size: small;
-}
-
-/*Animate arrows*/
-.menu > li:hover > a > .arrow{
-    transform: rotate(225deg); /*rotate to right*/
-}
-
-/*SUBMENU*/
-
-
-.has-dropdown {
-    position: relative;
-}
-
-.submenu {
-    position: absolute;
-    right: 0;  /* right value 0, right side is on same level than parent */
-    background-color: var(--primary);
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
-    white-space: nowrap; /* Disable line breaks; text on one row*/
-    padding: 0.7em 0; /*padding vertical and horizontal*/
-    /*Hide submenu when not hovered*/
-    opacity: 0;
-    transform: scaleY(0);
-    transform-origin: top center ;
-}
-
-/*Reveal submenu*/
-.menu > li:hover > a + .submenu{
-    opacity: 1;
-    transform: scaleY(1);
-}
-
-
-.submenu > li > a {
-    padding: 1em 1.5em; /*padding vertical and horizontal (text)*/
-    color: var(--box-color);
-    text-decoration: none;
-    font-size: 1.1rem;
-}
-
-.menu > li:hover>a, .submenu > li:hover>a {
-    background-color: rgba(139, 139, 139, 0.2); /* hover nav links & submenu links; lighter background color */
-    color: var(--hover-color);
-    box-shadow:inset 0px 0px 10px 5px var(--hover-color);
-}
 
 
 #back{
@@ -347,6 +250,105 @@ header{
 
 #alert{
   visibility: hidden;
+}
+
+
+/* MENU */
+
+.navbar{
+    grid-area: navbar;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0em 1em 0em 1.5em;
+    border-bottom:1px solid black ;
+}
+
+/* MENU */
+
+.branding-logo{
+    color: var(--box-color);
+    font-size: calc(1rem + 1vw);
+    text-decoration: none;
+}
+
+.menu{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.menu li{
+    list-style: none;
+}
+
+.menu li a{
+    display: block;
+    text-decoration: none;
+    color: var(--box-color);
+    padding: 1em 1.5em;
+    font-size: 1.2rem;
+}
+
+/*MENU-ARROWS*/
+
+.arrow{
+    width: 0.5em;
+    height: 0.5em;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -0.25em; /*getting it really middle with text*/
+    border-left: 0.15em solid currentColor;
+    border-bottom: 0.15em solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 150ms ease-in-out; /*smooth animation*/
+    font-size: small;
+}
+
+/*Animate arrows*/
+.menu > li:hover > a > .arrow{
+    transform: rotate(225deg); /*rotate to right*/
+}
+
+/*SUBMENU*/
+
+
+.has-dropdown {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    right: 0;  /* right value 0, right side is on same level than parent */
+    background-color: var(--primary);
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+    white-space: nowrap; /* Disable line breaks; text on one row*/
+    padding: 0.7em 0; /*padding vertical and horizontal*/
+    /*Hide submenu when not hovered*/
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top center ;
+}
+
+/*Reveal submenu*/
+.menu > li:hover > a + .submenu{
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+
+.submenu > li > a {
+    padding: 1em 1.5em; /*padding vertical and horizontal (text)*/
+    color: var(--box-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.menu > li:hover>a, .submenu > li:hover>a {
+    background-color: rgba(139, 139, 139, 0.2); /* hover nav links & submenu links; lighter background color */
+    color: var(--hover-color);
+    box-shadow:inset 0px 0px 10px 5px var(--hover-color);
 }
 
 
