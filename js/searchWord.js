@@ -91,6 +91,35 @@ hamburger.addEventListener('click', function(){
     
 })
 
+//sub-menu
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdownLinks = document.querySelectorAll(".has-dropdown > .menu-link");
+
+  dropdownLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault(); // Estetään oletuksena oleva linkin toiminta
+
+      const submenu = link.nextElementSibling; // Alavalikko (submenu)
+      if (submenu) {
+        // Tarkistetaan, onko alavalikko jo näkyvissä
+        const isOpen = submenu.classList.contains("active");
+
+        // Suljetaan kaikki muut alavalikot
+        document.querySelectorAll(".submenu.active").forEach((openSubmenu) => {
+          openSubmenu.classList.remove("active");
+        });
+
+        // Asetetaan valitun alavalikon tila (auki/suljettu)
+        if (!isOpen) {
+          submenu.classList.add("active");
+        } else {
+          submenu.classList.remove("active");
+        }
+      }
+    });
+  });
+});
+
 // ***THEME***
 
 // To set theme on page load based on localStorage
@@ -388,61 +417,65 @@ function showGameOverModal() {
 }
 
 
+//PISTEET MODAL
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    const infoButton = document.getElementById('infoBtn');
-  
-    // Luodaan modaali ja sen sisältö
-    const modal = document.createElement('div');
-    modal.id = 'infoModal';
-    modal.classList.add('modal');
-  
-    const modalContent = document.createElement('div');
-    modalContent.classList.add('modal-content');
-    modalContent.id = 'infoModalContent';
-  
-    // Luodaan sulje-painike oikeaan yläkulmaan
-    const closeButton = document.createElement('span');
-    closeButton.textContent = '×'; // Unicode-merkki "x"
-    closeButton.classList.add('close-button');
-  
-    // Lisätään teksti ja löydettyjen sanojen määrä
-    const completedGamesText = document.createElement('p');
-    completedGamesText.textContent = 'Sanoja löydetty yhteensä: ';
-  
-    const completedGamesCount = document.createElement('span');
-  
-    // Kootaan modaali
-    modalContent.appendChild(closeButton);
-    modalContent.appendChild(completedGamesText);
-    modalContent.appendChild(completedGamesCount);
-  
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-  
-    // Näytä modaali vain nappia painamalla
-    infoButton.addEventListener('click', () => {
-      let completedGames = parseInt(localStorage.getItem("game3Count")) || 0;
-      completedGamesCount.textContent = completedGames; // Päivitä sisältö
-      modal.style.display = 'flex'; // Näytä modaalin
-    });
-  
-    // Sulje modaali ulkopuolelle klikattaessa
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-  
-    // Sulje modaali ESC-näppäimellä
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        modal.style.display = 'none';
-      }
-    });
-  
-    // Sulje modaali "x"-painiketta klikatessa
-    closeButton.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
+  const infoButton = document.getElementById('infoBtn');
+
+  // Luodaan modaali ja sen sisältö
+  const modal = document.createElement('div');
+  modal.id = 'infoModal';
+  modal.classList.add('modal');
+  modal.style.display = 'none'; // Piilotetaan modaali oletuksena
+
+  const modalContent = document.createElement('div');
+  modalContent.classList.add('modal-content');
+  modalContent.id = 'infoModalContent';
+
+  // Luodaan sulje-painike oikeaan yläkulmaan
+  const closeButton = document.createElement('span');
+  closeButton.textContent = '×'; // Unicode-merkki "x"
+  closeButton.classList.add('close-button');
+
+  // Lisätään teksti ja löydettyjen sanojen määrä
+  const completedGamesText = document.createElement('p');
+  completedGamesText.textContent = 'Sanoja löydetty yhteensä: ';
+
+  const completedGamesCount = document.createElement('span');
+
+  // Kootaan modaali
+  modalContent.appendChild(closeButton);
+  modalContent.appendChild(completedGamesText);
+  modalContent.appendChild(completedGamesCount);
+
+  modal.appendChild(modalContent);
+  document.body.appendChild(modal);
+
+  // Näytä modaali vain nappia painamalla
+  infoButton.addEventListener('click', () => {
+    let completedGames = parseInt(localStorage.getItem("game3Count")) || 0;
+    completedGamesCount.textContent = completedGames; // Päivitä sisältö
+    modal.style.display = 'flex'; // Näytä modaali
   });
+
+  // Sulje modaali ulkopuolelle klikattaessa
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  // Sulje modaali ESC-näppäimellä
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      modal.style.display = 'none';
+    }
+  });
+
+  // Sulje modaali "x"-painiketta klikatessa
+  closeButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+});
   
