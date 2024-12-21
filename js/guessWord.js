@@ -282,9 +282,6 @@ const fourLetterWords = dictionary.filter(word => word.length === 4);
 const fiveLetterWords = dictionary.filter(word => word.length === 5);
 const sixLetterWords = dictionary.filter(word => word.length === 6);
 
-// Elementti, johon asetetaan valitun aiheen nimi
-const aiheOtsikko = document.querySelector('.aiheOtsikko h3');
-
 // Add event listener for the select element
 document.addEventListener('DOMContentLoaded', () => {
   const topicsBtn = document.getElementById('topicsBtn');
@@ -294,53 +291,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switch (selectedValue) {
       case "allWords":
-        updateDictionary(allLetterWords, "Kaikki sanat");
+        updateDictionary(allLetterWords);
         break;
       case "four":
-        updateDictionary(fourLetterWords, "4 kirjainta");
+        updateDictionary(fourLetterWords);
         break;
       case "five":
-        updateDictionary(fiveLetterWords, "5 kirjainta");
+        updateDictionary(fiveLetterWords);
         break;
       case "six":
-        updateDictionary(sixLetterWords, "6 kirjainta");
+        updateDictionary(sixLetterWords);
         break;
       default:
         console.error("Tuntematon valinta");
     }
   });
 
-
   // Initialize the game on page load with full dictionary by default
-  window.onload = () => newGame(allLetterWords, "Kaikki sanat");
-  });
+  window.onload = () => newGame(allLetterWords);
+});
 
-  // Function to update the game with the new word set and update the title
-  function updateDictionary(filteredWords, topicName) {
-    currentWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
-    aiheOtsikko.textContent = ` ${topicName}`; // Update aiheOtsikko title
-    newGame(filteredWords, topicName); // Start a new game with the chosen topic
-  }
-
-// Function to update the game with the new word set and update the title
-function updateDictionary(filteredWords, topicName) {
+// Function to update the game with the new word set
+function updateDictionary(filteredWords) {
   currentWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
-  aiheOtsikko.textContent = ` ${topicName}`; // Update aiheOtsikko title
-  newGame(filteredWords, topicName); // Start a new game with the chosen topic
+  newGame(filteredWords); // Start a new game with the chosen topic
 }
 
 // Start new game function, using full dictionary by default (all words)
-const newGame = (filteredWords = allLetterWords, topicName = "All Words") => {
+const newGame = (filteredWords = allLetterWords) => {
   currentWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
   wordGrid.innerHTML = ""; // Clear previous grid
   currentGuess = "";
   currentLetterIndex = 0;
   currentRow = 0;
-  aiheOtsikko.textContent = ` ${topicName}`; // Set aiheOtsikko title for new game
   createRows();
   createKeyboard();
 };
-
 
 
 // Create one row for the word grid
