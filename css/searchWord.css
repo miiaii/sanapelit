@@ -192,6 +192,7 @@ header{
 }
 #wordsToFind li.found {
     text-decoration: line-through;
+    background-color: rgba(24, 103, 130, 0.5);
   }
 
 

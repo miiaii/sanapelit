@@ -45,23 +45,18 @@
         </li>
       </ul>
     </nav>
-    <header>
-    <div class="Back" id="Back">
-      <!--Link going back to start page-->
-      <a href="./index.html">
-          <button id="back">< Aloitussivulle</button> <!--Unicode-icon for left pointing arrow and word back-->
-      </a>
-    </div>
-    </header>
+               <header id="header">
+          <button id="pisteetBtn">Pisteet</button>
+          <button id="savedBtn">Tallennetut sanat</button>
+        </header>
     <!--List area-->
-    <main>
+    <main id="main-container">
       <div class="saved-list-area" id="savedListArea">
           <h3>SAVED WORDS</h3>
           <ul class="saved-words-list" id="savedWordsList"></ul> <!--Saved words-->
           <button class="del" id="delBtn"><embed src="./images/garbage-svgrepo-com.svg" id="trash" />Empty list</button>
       </div>
   
-    
     </main>
   </div>
     <script src="./js/saved.js" defer></script>

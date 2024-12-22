@@ -95,5 +95,11 @@ document.getElementById('delBtn').addEventListener('click', function() {
 
 
 
+
+document.getElementById("pisteetBtn").addEventListener("click", function() {
+  window.location.href = "./kooste.html";
+});
+
+
 // Load saved words on page load
 window.onload = loadSavedWords;
