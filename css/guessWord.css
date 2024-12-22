@@ -138,25 +138,6 @@ header{
 
 
 
-#back{
-    grid-area: Back;
-    padding: 0.8em;
-    background-color: var(--box-color);
-    box-shadow: 
-      0px 0px 0.7px 0.2px hsl(0deg 0% 0% / 0.6),
-      0px 1px 1.5px 1px hsl(0deg 0% 0% / 0.2),
-      inset 0px 0px 5px 1px hsl(0deg 0% 0% / 0.3)
-    ;
-    border: 0.1px solid rgba(0,0,0,0.7);
-    border-radius: 0.5em;
-    margin: 1.5em;
-    
-}
-
-
-
-
-
 /*shows few box rows and then scrollable*/
 .scroll {
     height: 25vh; /* "empty" space on top of game area, place for box-rows and area for scrolling*/
@@ -252,6 +233,96 @@ header{
   visibility: hidden;
 }
 
+
+/* Modaali tyylit */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+#closeModal{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+
+
+.puhekupla{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  box-shadow:0px 0px 2px 0.5px var(--shadow-color),
+    0px 0px 5px 0.2px var(--shadow-color);
+  border-radius: 20px;
+  background-color: var(--bubble-color);
+  color: var(--text-color) ;
+}
+
+/*Without this, whole speechbubble & buttons move around with text changing (different size)*/
+.text-container {
+    padding: 5px;
+    height: 30vh;
+    overflow-y: auto;
+    overflow-x: auto;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;  /*text in middle*/
+    text-align: left;
+    justify-content: center;
+    font-style: italic;
+}
+
+.carousel-buttons button {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border: 0.1px solid var(--bubble-color);
+    border-radius: 15px;
+    margin: 0.5rem;
+    background-color: var(--bubble-color);
+    color: var(--text-color) ;
+
+    cursor: pointer;
+    box-shadow:
+      0px 0px 1px 1px hsl(0deg 0% 0% / 0.075),
+      1px 1px 3px 2px hsl(0deg 0% 0% / 0.2),
+      0px 0px 10px 2px hsl(0deg 0% 0% / 0.075),
+      0px 0px 15px 4px hsl(0deg 0% 0% / 0.1),
+      inset 0px 0px 1px 2px hsl(0deg 0% 0% / 0.1),
+      inset 1px 1px 1px 1px hsl(0deg 0% 100% / 0.075),
+      inset 0.5px 1px 0.5px 0.5px hsl(0deg 0% 100% / 0.1)
+    ;
+
+}
 
 /* MENU */
 
