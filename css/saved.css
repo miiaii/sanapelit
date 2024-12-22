@@ -1,45 +1,68 @@
-/*SAVED WORDS*/
+/*VARIABLES*/
 
-#savedListArea{
-    grid-area: savedListArea;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+:root{
+    box-sizing: border-box;
+    --primary: rgb(24, 103, 130);
+    --hover-color: rgb(9, 255, 206);
+    --dark: #1c2022;
+    --light: #fff;
+    font-size: 18px;
+    --bg-light:rgba(24, 103, 130, 0.5);
 }
 
-#savedListArea > h3{
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 0.3em;
-    text-shadow: 0px 0px 5px var(--background-color),
-    1px 1px 5px var(--shadow-color),
-    0px 0px 10px var(--shadow-color);
-    color: var(--box-color);
-
+*, *::after, *::before{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
 }
 
+/***THEMES***/
 
-#savedWordsList{
-    list-style-type: none;
-    margin-top: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1rem;
-    color: black;
-    font-weight: 600;
-    padding: 1.5rem 5rem;
+
+/*Light mode*/
+body:has(option[value="light"]:checked){
+    --background-color: #fff;
+    --text-color: black;
+    --box-color: #fff;
+    --bubble-color: #fff;
+    --button-color: rgb(227, 228, 229);
+    --shadow-color:rgba(0,0,0,1);
+  }
+  
+  /*Dark mode*/
+  body:has(option[value="dark"]:checked){
+    --background-color: black;
+    --text-color: #e2e2e2;
+    --box-color: lightgray;
+    --bubble-color: #333;
+    --button-color: rgba(103, 196, 227, 0.753);
+    --shadow-color: rgba(192,192,192,0.7);
+    
+  }
+  
+  
+  select{
+    left:0;
+    margin: 0em 1em;
+    padding:15px;
+    background-color:FFFFF;
     border-radius: 0.5em;
-    border: 0.05em solid var(--text-color);
-    background-color: var(--box-color);
-    box-shadow: inset 0px 0px 5px 1px var(--shadow-color);
-    min-width: 20vw;
-    min-height: 10vh;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
 
-
+  
+html, body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--background-color) ;
+    color: var(--text-color);
 }
+
+
 
 #delBtn{
   font-size: 1rem ;
@@ -68,114 +91,107 @@
 }
 
 
-/***THEMES***/
-
-
-/*Light mode*/
-body:has(option[value="light"]:checked){
-  --background-color: #fff;
-  --text-color: black;
-  --box-color: #fff;
-  --bubble-color: #fff;
-  --button-color: #fff;
-  --shadow-color:rgba(0,0,0,1);
-}
-
-/*Dark mode*/
-body:has(option[value="dark"]:checked){
-  --background-color: black;
-  --text-color: #fff;
-  --box-color: lightgray;
-  --bubble-color: #333;
-  --button-color: #333;
-  --shadow-color: rgba(192,192,192,0.7);
+#back{
+    grid-area: Back;
+    padding: 0.8em;
+    background-color: var(--box-color);
+    box-shadow: 
+      0px 0px 0.7px 0.2px hsl(0deg 0% 0% / 0.6),
+      0px 1px 1.5px 1px hsl(0deg 0% 0% / 0.2),
+      inset 0px 0px 5px 1px hsl(0deg 0% 0% / 0.3)
+    ;
+    border: 0.1px solid rgba(0,0,0,0.7);
+    border-radius: 0.5em;
+    margin: 1.5em;
 
 }
 
-/*Sepia mode*/
-body:has(option[value="sepia"]:checked){
-  --background-color: #b9a386;
-  --text-color: black;
-  --box-color: #e8d3bdd8;
-  --bubble-color: #e8d3bdd8;
-  --button-color: #D2B48C;
-  --shadow-color:black;
-}
 
-
-select{
-  left:0;
-  margin: 0em 1em;
-  padding:10px;
-  background-color:FFFFF;
-  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
-  border: 0.2em solid var(--shadow-color);
-  border-radius: 0.5em;
-  font-size: 0.8rem;
+.button {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: none;
+  box-shadow: 0px 0px 5px 2px rgba(24, 103, 130);
+  border-radius: 5px;
+  padding: 0.7rem;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover,
+.button:active {
+  background-color: var(--hover-color);
+  color: black;
+  transition: background-color 0.1s ease;
 }
 
 
-/* GRID AREAS*/
-.content{
-    display: grid;
-    grid-gap: 5px;
-    position: relative;
-    grid-template-areas:
-        "navbar"
-        "aiheOtsikko"
-        "game-area";
-    grid-template-columns: 1fr; /* Yksi sarake vie koko leveyden */
-    grid-auto-rows: minmax(50px, auto);
-    background-color: var(--background-color);
-    color: var(--text-color);
 
-}   
 
 /*SAVED WORDS GRID AREAS*/
 .wrap{
     display: grid;
-    grid-gap: 5px;
-    position: relative;
     grid-template-areas:
         "navbar"
-        "Back"
-        "savedListArea"
-        "hahmo-container";
-    grid-template-columns: 1fr; /* Yksi sarake vie koko leveyden */
-grid-auto-rows: minmax(50px, auto);
-    background-color: var(--background-color);
-    color: var(--text-color);
-
+        "header"
+        "main";
+    grid-template-rows:auto auto 1fr;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
 }   
 
-.navbar{
-    grid-area: navbar;
-    background-color: var(--primary);
-    box-shadow: 0px 0px 5px 0.5px var(--shadow-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em 1em 0.5em 1.5em;
-    border-bottom:1px solid var(--shadow-color);
-}
 
 
-.aiheOtsikko{
-    grid-area: aiheOtsikko;
+/*SAVED WORDS*/
+
+#savedListArea{
+    grid-area: savedListArea;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#savedListArea > h3{
     font-size: 2rem;
     font-weight: bold;
-    padding: 0.5em;
+    padding: 0.3em;
     text-shadow: 0px 0px 5px var(--background-color),
     1px 1px 5px var(--shadow-color),
     0px 0px 10px var(--shadow-color);
     color: var(--box-color);
+
 }
 
 
+#savedWordsList{
+    list-style-type: none;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    color: black;
+    font-weight: 600;
+    padding: 1.5rem 5rem;
+    border-radius: 0.5em;
+    border: 0.05em solid var(--text-color);
+    background-color: var(--box-color);
+    box-shadow: inset 0px 0px 5px 1px var(--shadow-color);
+    min-width: 20vw;
+    min-height: 10vh;
+
+}
+
+main{
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+}
 
 .hahmo-container {
     grid-area: hahmo-container;
@@ -189,27 +205,84 @@ grid-auto-rows: minmax(50px, auto);
 
 }
 
-.game-area{
-    grid-area: game-area;
-    padding: 1em;
-    margin:auto;
+#hahmo{
+    width: min(30%, 80%); 
     height: auto;
-    max-height: 70vh;
-    width: max(50%, 90vw);
-    min-width:fit-content;
-    background-color: #333;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    border:1px solid var(--shadow-color);
-    border-radius: 0.5em;
-    box-shadow: 0px 0px 5px 0.5px var(--shadow-color);
-    color: black; /*letters always black*/
-    font-weight: bold;
+    margin: 3%;
 }
 
+.puhekupla{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em;
+  box-shadow:0px 0px 2px 0.5px var(--shadow-color),
+    0px 0px 5px 0.2px var(--shadow-color);
+  border-radius: 20px;
+  background-color: var(--bubble-color);
+  color: var(--text-color) ;
+}
+
+/*Without this, whole speechbubble & buttons move around with text changing (different size)*/
+.text-container {
+    padding: 5px;
+    min-height: 20vh;
+    max-width: 50vw;
+    overflow-y: auto;
+    overflow-x: auto;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;  /*text in middle*/
+    text-align: center;
+    justify-content: center;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.speech-button {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border: 0.1px solid var(--bubble-color);
+    border-radius: 15px;
+    margin: 2px;
+    margin-top: 0.5em; /*space between text and buttons*/
+    background-color: var(--bubble-color);
+    color: var(--text-color) ;
+
+    cursor: pointer;
+    box-shadow:
+      0px 0px 1px 1px hsl(0deg 0% 0% / 0.075),
+      1px 1px 3px 2px hsl(0deg 0% 0% / 0.2),
+      0px 0px 10px 2px hsl(0deg 0% 0% / 0.075),
+      0px 0px 15px 4px hsl(0deg 0% 0% / 0.1),
+      inset 0px 0px 1px 2px hsl(0deg 0% 0% / 0.1),
+      inset 1px 1px 1px 1px hsl(0deg 0% 100% / 0.075),
+      inset 0.5px 1px 0.5px 0.5px hsl(0deg 0% 100% / 0.1)
+    ;
+
+}
+
+
+#alert{
+  visibility: hidden;
+}
+
+
 /* MENU */
+
+.navbar{
+    grid-area: navbar;
+    background-color: var(--primary);
+    box-shadow: 0px 0px 5px 0.5px var(--shadow-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 1em 0.5em 1.5em;
+    border-bottom:1px solid var(--shadow-color);
+}
+
 
 .branding-logo{
     color: white;
@@ -297,199 +370,23 @@ grid-auto-rows: minmax(50px, auto);
 }
 
 
-#back{
-    grid-area: Back;
-    padding: 0.8em;
-    background-color: var(--box-color);
-    box-shadow: 
-      0px 0px 0.7px 0.2px hsl(0deg 0% 0% / 0.6),
-      0px 1px 1.5px 1px hsl(0deg 0% 0% / 0.2),
-      inset 0px 0px 5px 1px hsl(0deg 0% 0% / 0.3)
-    ;
-    border: 0.1px solid rgba(0,0,0,0.7);
-    border-radius: 0.5em;
-    margin: 1.5em;
-
-}
-
-
-
-
-
-
-#hahmo{
-    width: min(30%, 80%); 
-    height: auto;
-    margin: 3%;
-}
-
-
-.puhekupla{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0.6em;
-  box-shadow:0px 0px 2px 0.5px var(--shadow-color),
-    0px 0px 5px 0.2px var(--shadow-color);
-  border-radius: 20px;
-  background-color: var(--bubble-color);
-  color: var(--text-color) ;
-}
-
-/*Without this, whole speechbubble & buttons move around with text changing (different size)*/
-.text-container {
-    padding: 5px;
-    min-height: 20vh;
-    max-width: 50vw;
-    overflow-y: auto;
-    overflow-x: auto;
-    word-wrap: break-word;
-    display: flex;
-    flex-direction: column;  /*text in middle*/
-    text-align: center;
-    justify-content: center;
-    font-style: italic;
-    font-size: 0.9rem;
-}
-
-.speech-button {
-    font-size: 13px;
-    font-weight: bold;
-    padding: 8px 12px;
-    border: 0.1px solid var(--bubble-color);
-    border-radius: 15px;
-    margin: 2px;
-    margin-top: 0.5em; /*space between text and buttons*/
-    background-color: var(--bubble-color);
-    color: var(--text-color) ;
-
-    cursor: pointer;
-    box-shadow:
-      0px 0px 1px 1px hsl(0deg 0% 0% / 0.075),
-      1px 1px 3px 2px hsl(0deg 0% 0% / 0.2),
-      0px 0px 10px 2px hsl(0deg 0% 0% / 0.075),
-      0px 0px 15px 4px hsl(0deg 0% 0% / 0.1),
-      inset 0px 0px 1px 2px hsl(0deg 0% 0% / 0.1),
-      inset 1px 1px 1px 1px hsl(0deg 0% 100% / 0.075),
-      inset 0.5px 1px 0.5px 0.5px hsl(0deg 0% 100% / 0.1)
-    ;
-
-}
-
-/*shows few box rows and then scrollable*/
-.scroll {
-    height: 25vh; /* "empty" space on top of game area, place for box-rows and area for scrolling*/
-    width: fit-content;
-    overflow-y: auto;
-    overflow-x: auto;
-    display: flex;
-    flex-direction: column-reverse; /*starts box-rows at bottom and moves them up when new row comes; scroll shows always newest row*/
-
-
-
-}
-/* Word grid; boxes-rows ; space between letter-boxes (pystysuunta) */
-.word-grid {
-    display: flex;
-    gap: 0.2em; 
-    flex-direction: row; 
-}
-
-/* Word grid boxes = each letter */
-.word-box {
-    width: auto;
-    min-width: 1.5rem;
-    height: auto;
-    min-height: 2rem;
-    border: 1px solid #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: var(--box-color);
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.7);
-}
-
-
-
-/* Word grid container; area for boxes */
-#wordGrid {
-    display: flex;
-    flex-direction: column;
-       /*HOX! JUSTIFY CONTENT MESSES UP SCROLL; cant see all content*/
-    gap: 5px; 
-    background-color: gray;
-    padding: 1em;
-    overflow-y: auto;
-    overflow-x: auto ;
-    /*if height is told, then scroll does not focus on bottom/ newest row*/
-    max-width: 90vw;
-    box-shadow: inset 0px 0px 5px 1px rgba(0,0,0,1);
-    border: 0.1em solid black
-
-}
-
-/* Keyboard */
-.keyboard {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 0.25em;
-    padding: 3em 0.5em 1.5em 0.5em;
-    justify-content: center;
-    align-items: center;
-}
-
-.key {
-    padding: 0.7em;
-    background-color:var(--box-color);
-    border: 0.05em solid black;
-    border-radius: 0.2em;
-    text-align: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
-    box-shadow: 0px 0px 5px 1px rgba(0,0,0,1), inset 0px 0px 5px 1px rgba(85, 85, 85, 0.5);
-}
-
-/* Delete-näppäimen tyyli */
-.delete-key {
-    background-color: rgba(255, 206, 206, 0.8);
-
-}
-
-/* Enter-näppäimen tyyli */
-.enter-key {
-    background-color:rgba(173, 241, 173, 0.8);
-
-}
-
-
-#alert{
-  visibility: hidden;
-}
-
-
-/*Responsive*/
+/*Responsive NAV*/
 
 @media screen and (max-width: 700px) {
     .navbar{
         position: relative;
-        padding: 2em;
+        padding: 0.6em;
     }
 
     .menu{
         flex-flow: column;
         position: absolute;
-        top: 5em;
+        top: 2.7em;
         left: 0;
         right: 0;
         height: fit-content;
         padding: 1.5em 0em 1.5em 0em;
-        background-color: #333;
+        background-color: var(--primary);
         border: none;
         box-shadow: 0px 0px 10px 0.5px #000;
         /*for close/open menu from hamburger icon*/
@@ -501,7 +398,14 @@ grid-auto-rows: minmax(50px, auto);
 
 }
 
+
+/* Näytetään alavalikko, kun sillä on luokka "active" */
+.submenu.active {
+  display: block;
+}
+
     .submenu {
+      display:none;
         left: 0;  /* left side is on same level than parent */
         padding: 1em 0; /*padding vertical and horizontal*/
         border-left: 2px solid rgba(0, 0, 0, 0.2);
@@ -512,12 +416,12 @@ grid-auto-rows: minmax(50px, auto);
 
     .menu > li:hover > a + .submenu {
         position: relative; /*Opened submenu will "push" below elements down so they won't lap*/
-
+     
     }
 
     .submenu > li > a, .menu > li > a {
         padding: 0.8em 1.5em; /*padding vertical and horizontal (text)*/
-        color: white;
+        color: var(--box-color);
         text-decoration: none;
         font-size: 1.3em;
     }
@@ -528,7 +432,7 @@ grid-auto-rows: minmax(50px, auto);
         width: 2em;
         height: 0.25em;
         display: block;
-        background-color: var(--light);
+        background-color: var(--box-color);
         position: relative;
         cursor: pointer;
         transition: 0.2s transform ease-in-out;
@@ -585,24 +489,6 @@ grid-auto-rows: minmax(50px, auto);
 
 @media screen and (min-width: 700px) {
 
-    .content{
-        display: grid;
-        grid-gap: 5px;
-        position: relative;
-        grid-template-areas:
-            "navbar navbar navbar"
-            "aiheOtsikko aiheOtsikko aiheOtsikko"
-            "game-area game-area game-area"
-            ;    
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-auto-rows: minmax(3em, auto);
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-
-    }
-
-
 
 #savedListArea{
     grid-area: savedListArea;
@@ -613,93 +499,42 @@ grid-auto-rows: minmax(50px, auto);
 
 }
 
+#savedWordsList{
+    
+    min-width: 60vw;
+    min-height: 10vh;
 
-
-
-
-
-  .game-area{
-    grid-area: game-area;
-    padding: 1em;
-    height: 33em;
-    width: max(50%, 50vw);
-    min-width:fit-content;
-    background-color: #333;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    border:1px solid var(--shadow-color);
-    box-shadow: 0px 0px 5px 0.5px var(--shadow-color);
-    color: black; /*letters always black*/
-    font-weight: bold;
 }
 
 
-
-
-
-
-
+.hahmo-container {
+    grid-area: hahmo-container;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    height: auto;
+    padding:0;
+    margin: 0;
+}
 
     #hahmo{
-        max-width: 12%;
+        max-width: 30%;
         height: auto;
     }
-
-
 
 
     .text-container {
-        max-width: 40vw;
+        max-width: 50vw;
         font-size: 1.3rem;
     }
-
-/* Keyboard */
-.keyboard {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 0.25em;
-    padding: 3em 0.5em 1.5em 0.5em;
-    justify-content: center;
-    align-items: center;
-}    
-
-    .key {
-        padding: 0.5em;
-        background-color:var(--box-color);
-        border: 1px solid #000;
-        border-radius: 0.5em;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        user-select: none;
-        width: max(4.5rem, 1.5vw);
-        height: auto;
-        font-size: 1.3rem;
-    }
-
-    /* Delete-näppäimen tyyli */
-.delete-key {
-    background-color: rgba(255, 206, 206, 0.8);
-
-
-}
-
-/* Enter-näppäimen tyyli */
-.enter-key {
-    background-color:rgba(173, 241, 173, 0.8);
-
-
-}
 
 .word-box {
     width: auto;
     min-width: 2.5rem;
     height: auto;
-    min-height: 2.5rem;
-    font-size: 1.5rem;
+    min-height: 1rem;
+    font-size: 1.rem;
 }
 
 #savedListArea > h3, .aiheOtsikko{

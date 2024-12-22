@@ -10,58 +10,52 @@
     <div class="content">
 
         <nav class="navbar">
-            <div class="branding">
-                <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
-            </div>
-            <!--Hamburger-->
-            <label for="input-hamburger" class="hamburger"></label>
-            <input type="checkbox" id="input-hamburger" hidden>
-            <ul class="menu">
-                <!--TOPICS-->
-                <li class="has-dropdown">
-                    <a href="#" class="menu-link" id="menuTopics">Topics
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="#" class="menu-link" id="allWords">All words</a></li>
-                        <li><a href="#" class="menu-link" id="4letterWords">4 letter words</a></li>
-                        <li><a href="#" class="menu-link" id="5letterWords" >5 letter words</a></li>
-                        <li><a href="#" class="menu-link" id="6letterWords">6 letter words</a></li>
-               
-                    </ul>
-                </li>
+         <div class="branding">
+           <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
+         </div>
+         <!--Hamburger-->
+         <label for="input-hamburger" class="hamburger"></label>
+         <input type="checkbox" id="input-hamburger" hidden>
+         <ul class="menu">
+           <li><a href="./index.html" class="menu-link">Aloitus</a></li>
+           <li class="has-dropdown">
+             <a href="#" class="menu-link" id="menuTopics">Pelit
+               <span class="arrow"></span>
+             </a>
+             <ul class="submenu">
+               <li><a href="./searchWord.html" class="menu-link" id="game1">Löydä sana</a></li>
+               <li><a href="./guessWord.html" class="menu-link" id="game2">Arvaa sana</a></li>
+             </ul>
+           </li>
 
-                <!--SAVED WORDS-->
-                <li><a href="./saved.html" class="menu-link">Saved words</a></li>
+           <!--SAVED WORDS-->
+           <li><a href="./saved.html" class="menu-link">Koostesivu</a></li>
 
-                <!--SETTINGS-->
-                  <li class="has-dropdown">
-                    <a href="#" class="menu-link" id="menuTopics">Pelit
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="./searchWord.html" class="menu-link" id="menuGame">Löydä sana</a></li>
-                        <li><a href="./guessWord.html" class="menu-link" id="menuGame">Arvaa sana</a></li>               
-                    </ul>
-                    
-
-
-                    <a href="#" class="menu-link">Settings
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="submenu" id="menuSettings">
-                        <select id="theme-selector"> 
-                          <option value="light">Light mode       </option>
-                          <option value="dark">Dark mode       </option>
-                        </select>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="aiheOtsikko">
-            <h3></h3>
-        </div>
+           <!--SETTINGS-->
+           <li class="has-dropdown">
+             <a href="#" class="menu-link">Settings
+               <span class="arrow"></span>
+             </a>
+             <ul class="submenu" id="menuSettings">
+               <select id="theme-selector">
+                 <option value="light">Light mode </option>
+                 <option value="dark">Dark mode </option>
+               </select>
+             </ul>
+           </li>
+         </ul>
+       </nav>
+       
+        <header>
+          <select id="topicsBtn">
+            <option value="" disabled selected>Valitse aihe</option> <!-- Oletusarvoinen teksti -->
+            <option value="allWords" id="allWords">Kaikki sanat</option>
+            <option value="four" id="4letterWords">4 kirjainta</option>
+            <option value="five" id="5letterWords">5 kirjainta</option>
+            <option value="six" id="6letterWords">6 kirjainta</option>
+          </select>
+          <button class="button" id="ohjeBtn">Ohjeet</button>
+        </header>
 
         <main class="game-area" id="gameArea">
               <!--Game alerts-->
@@ -79,6 +73,6 @@
             </div> <!--Keyboard for typing-->
         </main>
     </div>
-    <script src="./js/guessWord.js"></script>
+    <script src="./js/guessWord.js" defer></script>
 </body>
 </html>

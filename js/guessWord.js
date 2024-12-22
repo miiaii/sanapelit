@@ -11,105 +11,209 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // Alphabet used in the game
 
 // HOX! NEEDS TO BE UPPER CASE TO WORK
 const dictionary = [
-    "ALGORITHM",
-    "APPLICATION",
-    "BANDWIDTH",
-    "DATABASE",
-    "DEBUGGING",
-    "ENCRYPTION",
-    "FRAMEWORK",
-    "FUNCTION",
-    "LIBRARY",
-    "MARKUP",
-    "NETWORK",
-    "PROTOCOL",
-    "REPOSITORY",
-    "SERVER",
-    "SOFTWARE",
-    "STYLESHEET",
-    "VARIABLE",
-    "PROGRAMMING",
-    // 4-letter ICT words
-    "DATA",
-    "CODE",
-    "BYTE",
-    "LINK",
-    "NODE",
-    "HTML",
-    "FONT",
-    "JAVA",
-    // 5-letter ICT words
-    "CACHE",
-    "ARRAY",
-    "INPUT",
-    "LOGIN",
-    "STACK",
-    "VIRUS",
-    "BOARD",
-    "PATCH",
+    "ELEPHANT",
+    "GIRAFFE",
+    "CROCODILE",
+    "PENGUIN",
+    "BUTTERFLY",
+    "SUNFLOWER",
+    "DAISY",
+    "MAPLE",
+    "OAKTREE",
+    "RAILWAY",
+    "HIGHWAY",
+    "AIRPLANE",
+    "BICYCLE",
+    "SCOOTER",
+    "CARPET",
+    "CUSHION",
+    "WARDROBE",
+    "CHAIR",
+    "LADDER",
+    "TELEPHONE",
+    "UMBRELLA",
+    "PAINTING",
+    "GLASSES",
+    "COMPUTER",
+    "NOTEBOOK",
+    "BACKPACK",
+    "PINEAPPLE",
+    "STRAWBERRY",
+    "RASPBERRY",
+    "BLUEBERRY",
+    "WHALE",
+    "OCTOPUS",
+    "TIGER",
+    "LEOPARD",
+    "PANDA",
+    "SQUIRREL",
+    "HAMSTER",
+    "TULIP",
+    "ROSE",
+    "LILAC",
+    "FISH",
+    "BIRD",
+    "DOGS",
+    "CATS",
+    "BLUE",
+    "PINK",
+    "GRAY",
+    "CYAN",
+    "BOAT",
+    "BUSS",
+    "TREE",
+    "ROCK",
+    "BOWL",
+    "CUPP",
+    "KEYS",
+    "BOOK",
+    "DESK",
+    "SOCK",
+    "FORK",
+    "LAMP",
+    "HORSE",
+    "ZEBRA",
     "MOUSE",
-    // 6-letter ICT words
-    "DOMAIN",
-    "CLIENT",
-    "SCRIPT",
-    "MEMORY",
-    "DRIVER",
-    "BACKUP",
-    "EXPORT",
-    "COOKIE",
-    "KERNEL",
-    "UPLOAD"
+    "KOALA",
+    "BLACK",
+    "WHITE",
+    "GREEN",
+    "PURPLE",
+    "TRAINS",
+    "PLANE",
+    "TABLE",
+    "HOUSE",
+    "PILOT",
+    "CABLE",
+    "PHONE",
+    "CHAIR",
+    "LIGHT",
+    "PLANT",
+    "GRAPE",
+    "PEACH",
+    "ORANGE",
+    "YELLOW",
+    "FLOWER",
+    "BOTTLE",
+    "MARKER",
+    "WINDOW",
+    "GUITAR",
+    "BRIDGE",
+    "MARKET",
+    "TRAVEL",
+    "BANANA",
+    "HAMMER",
+    "CAMERA",
+    "LADDER",
+    "ANIMAL",
+    "TUNNEL",
+    "RABBIT",
+    "MONKEY",
+    "ISLAND",
+    "LIZARD"
 ];
 
-// translations in Finnish
-const translations = {
-    "algorithm": "algoritmi",
-    "application": "sovellus",
-    "bandwidth": "kaistanleveys",
-    "database": "tietokanta",
-    "debugging": "virheenkorjaus",
-    "encryption": "salaus",
-    "framework": "kehys",
-    "function": "funktio",
-    "library": "kirjasto",
-    "markup": "merkkauskieli",
-    "network": "verkko",
-    "protocol": "protokolla",
-    "repository": "varasto",
-    "server": "palvelin",
-    "software": "ohjelmisto",
-    "stylesheet": "tyylitiedosto",
-    "variable": "muuttuja",
-    "programming": "ohjelmointi",
-    "data": "data",
-    "code": "koodi",
-    "byte": "tavu",
-    "link": "linkki",
-    "node": "solmu",
-    "html": "html",
-    "font": "kirjasin",
-    "java": "java",
-    "cache": "välimuisti",
-    "array": "taulukko",
-    "input": "syöte",
-    "login": "kirjautuminen",
-    "stack": "pino",
-    "virus": "virus",
-    "board": "levy",
-    "patch": "korjaus",
-    "mouse": "hiiri",
-    "domain": "verkkotunnus",
-    "client": "asiakas",
-    "script": "käsikirjoitus",
-    "memory": "muisti",
-    "driver": "ajuri",
-    "backup": "varmuuskopio",
-    "export": "vienti",
-    "cookie": "eväste",
-    "kernel": "ydin",
-    "upload": "lähetys"
-};
 
+const translations = {
+  "elephant": "norsu",
+  "giraffe": "kirahvi",
+  "crocodile": "krokotiili",
+  "penguin": "pingviini",
+  "butterfly": "perhonen",
+  "sunflower": "auringonkukka",
+  "daisy": "kaunokki",
+  "maple": "vaherra",
+  "oaktree": "tammi",
+  "railway": "rautatie",
+  "highway": "moottoritie",
+  "airplane": "lentokone",
+  "bicycle": "polkupyörä",
+  "scooter": "skootteri",
+  "carpet": "matto",
+  "cushion": "tyyny",
+  "wardrobe": "vaatekaappi",
+  "chair": "tuoli",
+  "ladder": "tikkaat",
+  "telephone": "puhelin",
+  "umbrella": "sadevarjo",
+  "painting": "maalaus",
+  "glasses": "lasit",
+  "computer": "tietokone",
+  "notebook": "viho",
+  "backpack": "reppu",
+  "pineapple": "ananas",
+  "strawberry": "mansikka",
+  "raspberry": "vadelma",
+  "blueberry": "mustikka",
+  "whale": "valas",
+  "octopus": "mustekala",
+  "tiger": "tiikeri",
+  "leopard": "leopardi",
+  "panda": "panda",
+  "squirrel": "orava",
+  "hamster": "hamsteri",
+  "tulip": "tulppaani",
+  "rose": "ruusu",
+  "lilac": "syreeni",
+  "fish": "kala",
+  "bird": "lintu",
+  "dogs": "koirat",
+  "cats": "kissat",
+  "blue": "sininen",
+  "pink": "vaaleanpunainen",
+  "gray": "harmaa",
+  "cyan": "syaani",
+  "boat": "vene",
+  "buss": "bussi",
+  "tree": "puu",
+  "rock": "kivi",
+  "bowl": "kulho",
+  "cupp": "kuppi",
+  "keys": "avaimet",
+  "book": "kirja",
+  "desk": "työpöytä",
+  "sock": "sukka",
+  "fork": "haarukka",
+  "lamp": "lamppu",
+  "horse": "hevonen",
+  "zebra": "seeprä",
+  "mouse": "hiiri",
+  "koala": "koala",
+  "black": "musta",
+  "white": "valkoinen",
+  "green": "vihreä",
+  "purple": "liila",
+  "trains": "junat",
+  "plane": "kone",
+  "table": "pöytä",
+  "house": "talo",
+  "pilot": "lentäjä",
+  "cable": "kaapeli",
+  "phone": "puhelin",
+  "light": "valo",
+  "plant": "kasvi",
+  "grape": "viinirypäle",
+  "peach": "persikka",
+  "orange": "oranssi",
+  "yellow": "keltainen",
+  "flower": "kukka",
+  "bottle": "pullo",
+  "marker": "tussikynä",
+  "window": "ikkuna",
+  "guitar": "kitara",
+  "bridge": "silta",
+  "market": "tori",
+  "travel": "matkustus",
+  "banana": "banaani",
+  "hammer": "vasara",
+  "camera": "kamera",
+  "animal": "eläin",
+  "tunnel": "tunneli",
+  "rabbit": "kaniini",
+  "monkey": "apina",
+  "island": "saari",
+  "lizard": "lisko"
+};
 
 
 // ***HAMBURGER-MENU***
@@ -178,47 +282,51 @@ const fourLetterWords = dictionary.filter(word => word.length === 4);
 const fiveLetterWords = dictionary.filter(word => word.length === 5);
 const sixLetterWords = dictionary.filter(word => word.length === 6);
 
-// Elementti, johon asetetaan valitun aiheen nimi
-const aiheOtsikko = document.querySelector('.aiheOtsikko h3');
-
-// Add event listeners for the menu items
+// Add event listener for the select element
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('allWords').addEventListener('click', () => {
-    updateDictionary(allLetterWords, "All Words");
-  });
-  document.getElementById('4letterWords').addEventListener('click', () => {
-    updateDictionary(fourLetterWords, "4 Letter Words");
-  });
-  document.getElementById('5letterWords').addEventListener('click', () => {
-    updateDictionary(fiveLetterWords, "5 Letter Words");
-  });
-  document.getElementById('6letterWords').addEventListener('click', () => {
-    updateDictionary(sixLetterWords, "6 Letter Words");
+  const topicsBtn = document.getElementById('topicsBtn');
+
+  topicsBtn.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+
+    switch (selectedValue) {
+      case "allWords":
+        updateDictionary(allLetterWords);
+        break;
+      case "four":
+        updateDictionary(fourLetterWords);
+        break;
+      case "five":
+        updateDictionary(fiveLetterWords);
+        break;
+      case "six":
+        updateDictionary(sixLetterWords);
+        break;
+      default:
+        console.error("Tuntematon valinta");
+    }
   });
 
   // Initialize the game on page load with full dictionary by default
-  window.onload = () => newGame(allLetterWords, "All Words");
+  window.onload = () => newGame(allLetterWords);
 });
 
-// Function to update the game with the new word set and update the title
-function updateDictionary(filteredWords, topicName) {
+// Function to update the game with the new word set
+function updateDictionary(filteredWords) {
   currentWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
-  aiheOtsikko.textContent = ` ${topicName}`; // Update aiheOtsikko title
-  newGame(filteredWords, topicName); // Start a new game with the chosen topic
+  newGame(filteredWords); // Start a new game with the chosen topic
 }
 
 // Start new game function, using full dictionary by default (all words)
-const newGame = (filteredWords = allLetterWords, topicName = "All Words") => {
+const newGame = (filteredWords = allLetterWords) => {
   currentWord = filteredWords[Math.floor(Math.random() * filteredWords.length)];
   wordGrid.innerHTML = ""; // Clear previous grid
   currentGuess = "";
   currentLetterIndex = 0;
   currentRow = 0;
-  aiheOtsikko.textContent = ` ${topicName}`; // Set aiheOtsikko title for new game
   createRows();
   createKeyboard();
 };
-
 
 
 // Create one row for the word grid
