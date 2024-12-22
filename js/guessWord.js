@@ -541,7 +541,7 @@ function disableKey(letter, color) {
 // Function to be called on win
 function win() {
     const translation = translations[currentWord.toLowerCase()];
-    const save = confirm(`You have guessed right! The word is "${currentWord}", which means "${translation}" in Finnish. Do you want to save the word?`);
+    const save = confirm(`Arvasit oikein! \u{1F44F}\u{1F929} Sana oli "${currentWord}", joka on "${translation}" suomeksi. Haluatko tallentaa sanan?`);
     //LOCALSTORAGE PISTEIDEN TALLENNUS
 let savedPoints = parseInt(localStorage.getItem("game2Count")) || 0;
 savedPoints++;
@@ -549,7 +549,7 @@ localStorage.setItem("game2Count", savedPoints);
     
     if (save) {
         addSavedList(currentWord, translation); // Save the word in localStorage
-        alert('Word saved!');
+        alert('Sana tallennettu!');
     }
     
     newGame(); // Start a new game after winning

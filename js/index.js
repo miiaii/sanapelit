@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
   const games = [
     {
-      name: "Löydä sana",
+      name: "Löydä sana \u{1F575}",
       link: "./searchWord.html"
         },
     {
-      name: "Arvaa sana",
+      name: "Arvaa sana \u{1F914}",
       link: "./guessWord.html"
         }
     ];
