@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const playButton = document.createElement('button');
     playButton.classList.add('play-button');
-    playButton.textContent = "Pelaa";
+    playButton.textContent = "Pelaa \u27B2";
     playButton.onclick = () => {
       window.location.href = game.link;
     };
