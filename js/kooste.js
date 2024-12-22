@@ -60,3 +60,26 @@ document.addEventListener("DOMContentLoaded", function() {
 document.getElementById("savedBtn").addEventListener("click", function() {
   window.location.href = "./saved.html";
 });
+
+
+
+// Retrieve game progress and scores
+const gameProgress = {
+  "game1": {
+    completed: parseInt(localStorage.getItem("game1Completed")) || 0,
+    score: parseInt(localStorage.getItem("game1Count")) || 0
+  },
+  "game2": {
+    completed: parseInt(localStorage.getItem("game2Completed")) || 0,
+    score: parseInt(localStorage.getItem("game2Count")) || 0
+  },
+  "game3": {
+    completed: parseInt(localStorage.getItem("game3Completed")) || 0,
+    score: parseInt(localStorage.getItem("game3Count")) || 0
+  }
+};
+
+// Update game point counts
+document.getElementById("game1Count").textContent = gameProgress.game1.score;
+document.getElementById("game2Count").textContent = gameProgress.game2.score;
+document.getElementById("game3Count").textContent = gameProgress.game3.score;
