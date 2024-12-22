@@ -262,22 +262,22 @@ main{
 }
 
 
-/* MENU */
+/*NAV*/
 
 .navbar{
     grid-area: navbar;
     background-color: var(--primary);
-    box-shadow: 0px 0px 5px 0.5px var(--shadow-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 1em 0.5em 1.5em;
-    border-bottom:1px solid var(--shadow-color);
+    padding: 0em 1em 0em 1.5em;
+    border-bottom:1px solid black ;
 }
 
+/* MENU */
 
 .branding-logo{
-    color: white;
+    color: var(--box-color);
     font-size: calc(1rem + 1vw);
     text-decoration: none;
 }
@@ -295,7 +295,7 @@ main{
 .menu li a{
     display: block;
     text-decoration: none;
-    color: white;
+    color: var(--box-color);
     padding: 1em 1.5em;
     font-size: 1.2rem;
 }
@@ -330,7 +330,7 @@ main{
 .submenu {
     position: absolute;
     right: 0;  /* right value 0, right side is on same level than parent */
-    background-color: #2e2e2e;
+    background-color: var(--primary);
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
     white-space: nowrap; /* Disable line breaks; text on one row*/
     padding: 0.7em 0; /*padding vertical and horizontal*/
@@ -348,8 +348,8 @@ main{
 
 
 .submenu > li > a {
-    padding: 0.7em 1.5em; /*padding vertical and horizontal (text)*/
-    color: white;
+    padding: 1em 1.5em; /*padding vertical and horizontal (text)*/
+    color: var(--box-color);
     text-decoration: none;
     font-size: 1.1rem;
 }
@@ -357,9 +357,10 @@ main{
 .menu > li:hover>a, .submenu > li:hover>a {
     background-color: rgba(139, 139, 139, 0.2); /* hover nav links & submenu links; lighter background color */
     color: var(--hover-color);
-    font-style: italic;
-    box-shadow:inset 0px 0px 10px 5px rgba(0, 0, 0, 0.7);
+    box-shadow:inset 0px 0px 10px 5px var(--hover-color);
 }
+
+
 
 
 /*Responsive NAV*/
