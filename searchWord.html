@@ -47,8 +47,8 @@
         </nav>
         <header id="header">
            <div id="topArea">
-              <button class="button" id="infoBtn">
-               PISTEET
+              <button class="button" id="ohjeBtn">
+               OHJEET
                </button>
               <div id="counter">
                <p>LÖYDETTY: <span id="score">0</span></p>
@@ -76,14 +76,34 @@
         <div id="notificationContainer"> <!-- ilmoitukset; +1 sana löydetty -->
         </div>
         <div id="gameOverModal" class="modal"> <!--ilmoituslaatikko; kaikki sanat löydetty -->
-            <div class="modal-content">
+            <div class="modal-content" id="overContent">
                 <h4>HIENOA, LÖYSIT KAIKKI SANAT!</h4>
                 <ul id="wordsModal"></ul>
                 <button id="yesButton">UUSI PELI</button>
             </div>
         </div>
     </main>
+            <!-- Modaali Ohjeet -->
+  <div id="ohjeetContainer" class="modal hidden">
+    <div class="modal-content" id="ohjeetContent">
+      <span id="closeModal" id="xBtn">&times;</span>
+      <div id="carousel">
+        <div class="puhekupla">
+  <div class="text-container">
+    <p id="puheTeksti">Settings- valikosta voit valita light/dark mode teemojen välillä.</p>
+  </div>
+        <div class="carousel-buttons">
+          <button id="backButton">←</button>
+          <button id="pauseButton">||</button>
+          <button id="nextButton">→</button>
+        </div>
+      </div>
     </div>
+  </div>
+  </div>
+
+    </div>
+    
 
     <script src="./js/searchWord.js" defer></script>
 </body>

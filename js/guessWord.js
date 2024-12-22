@@ -542,6 +542,10 @@ function disableKey(letter, color) {
 function win() {
     const translation = translations[currentWord.toLowerCase()];
     const save = confirm(`You have guessed right! The word is "${currentWord}", which means "${translation}" in Finnish. Do you want to save the word?`);
+    //LOCALSTORAGE PISTEIDEN TALLENNUS
+let savedPoints = parseInt(localStorage.getItem("game2Count")) || 0;
+savedPoints++;
+localStorage.setItem("game2Count", savedPoints);
     
     if (save) {
         addSavedList(currentWord, translation); // Save the word in localStorage

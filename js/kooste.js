@@ -83,3 +83,29 @@ const gameProgress = {
 document.getElementById("game1Count").textContent = gameProgress.game1.score;
 document.getElementById("game2Count").textContent = gameProgress.game2.score;
 document.getElementById("game3Count").textContent = gameProgress.game3.score;
+
+
+//reset points = clear localStorage      
+document.getElementById('delBtn1').addEventListener('click', function() {
+  const reset = confirm("Haluatko varmasti tyhjentää pisteet nollille?");
+  if (reset) {
+    localStorage.removeItem('game1Count');
+    document.getElementById('game1Count').textContent = 0;
+  }
+});
+
+document.getElementById('delBtn2').addEventListener('click', function() {
+  const reset = confirm("Haluatko varmasti tyhjentää pisteet nollille?");
+  if (reset) {
+    localStorage.removeItem('game2Count');
+    document.getElementById('game2Count').textContent = 0;
+  }
+});
+
+document.getElementById('delBtn3').addEventListener('click', function() {
+  const reset = confirm("Haluatko varmasti tyhjentää pisteet nollille?");
+  if (reset) {
+    localStorage.removeItem('game3Count');
+    document.getElementById('game3Count').textContent = 0;
+  }
+});

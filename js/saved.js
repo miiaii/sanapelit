@@ -89,9 +89,12 @@ function loadSavedWords() {
 
 //empty saved list = clear localStorage      
 document.getElementById('delBtn').addEventListener('click', function() {
+  const reset = confirm("Haluatko varmasti tyhjentää tallennettujen sanojen listan?");
+  if (reset) {
   localStorage.removeItem('savedWords')
-  loadSavedWords()
+  loadSavedWords()}
 })
+
 
 
 

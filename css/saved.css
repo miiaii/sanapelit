@@ -128,6 +128,13 @@ html, body{
     overflow: auto;
 }   
 
+header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0.5rem 0;
+}
 
 
 /*SAVED WORDS*/
