@@ -72,17 +72,12 @@ const gameProgress = {
   "game2": {
     completed: parseInt(localStorage.getItem("game2Completed")) || 0,
     score: parseInt(localStorage.getItem("game2Count")) || 0
-  },
-  "game3": {
-    completed: parseInt(localStorage.getItem("game3Completed")) || 0,
-    score: parseInt(localStorage.getItem("game3Count")) || 0
   }
 };
 
 // Update game point counts
 document.getElementById("game1Count").textContent = gameProgress.game1.score;
 document.getElementById("game2Count").textContent = gameProgress.game2.score;
-document.getElementById("game3Count").textContent = gameProgress.game3.score;
 
 
 //reset points = clear localStorage      
@@ -102,10 +97,3 @@ document.getElementById('delBtn2').addEventListener('click', function() {
   }
 });
 
-document.getElementById('delBtn3').addEventListener('click', function() {
-  const reset = confirm("Haluatko varmasti tyhjentää pisteet nollille?");
-  if (reset) {
-    localStorage.removeItem('game3Count');
-    document.getElementById('game3Count').textContent = 0;
-  }
-});
