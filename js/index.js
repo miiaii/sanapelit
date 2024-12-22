@@ -54,3 +54,41 @@ document.addEventListener("DOMContentLoaded", function() {
     localStorage.setItem('theme', selectedTheme); // Save the selected theme to localStorage
   });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const games = [
+    {
+      name: "Löydä sana",
+      link: "./searchWord.html"
+        },
+    {
+      name: "Arvaa sana",
+      link: "./guessWord.html"
+        }
+    ];
+
+  const gameIconsContainer = document.getElementById('game-icons-container');
+
+  games.forEach(game => {
+    const gameIcon = document.createElement('div');
+    gameIcon.classList.add('game-icon');
+
+    const gameName = document.createElement('div');
+    gameName.classList.add('game-name');
+    gameName.textContent = game.name;
+
+    const playButton = document.createElement('button');
+    playButton.classList.add('play-button');
+    playButton.textContent = "Pelaa";
+    playButton.onclick = () => {
+      window.location.href = game.link;
+    };
+
+    gameIcon.appendChild(gameName);
+    gameIcon.appendChild(playButton);
+
+    gameIconsContainer.appendChild(gameIcon);
+  });
+});
