@@ -253,25 +253,142 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ***THEME***
+//THEMES
+
+const toggle = document.getElementById("toggle");
+toggle.onclick = function() {
+ toggle.classList.toggle("active");
+}
 
 // To set theme on page load based on localStorage
-document.addEventListener("DOMContentLoaded", function() {
-  const themeSelector = document.getElementById('theme-selector');
-  const savedTheme = localStorage.getItem('theme');
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("toggle");
+  const body = document.body;
+  const savedTheme = localStorage.getItem("theme");
 
+  // Apply the saved theme on page load
   if (savedTheme) {
-    document.body.className = savedTheme; // Apply the saved theme class
-    themeSelector.value = savedTheme; // Set the selector to match the saved theme
+    body.className = savedTheme; // Apply the saved theme class
+    toggle.classList.toggle("active", savedTheme === "dark"); // Update toggle state
   }
 
-  // Change theme when user selects a new one
-  themeSelector.addEventListener('change', function() {
-    const selectedTheme = themeSelector.value;
-    document.body.className = selectedTheme; // Apply the theme class
-    localStorage.setItem('theme', selectedTheme); // Save the selected theme to localStorage
+  // Toggle theme when user clicks on the toggle
+  toggle.onclick = function () {
+    const isDarkMode = body.classList.toggle("dark"); // Toggle the "dark" class
+    body.classList.toggle("light", !isDarkMode); // Ensure "light" class is also toggled
+    toggle.classList.toggle("active", isDarkMode); // Update toggle state
+
+    // Save the selected theme to localStorage
+    const selectedTheme = isDarkMode ? "dark" : "light";
+    localStorage.setItem("theme", selectedTheme);
+  };
+});
+
+
+//OHJEET
+
+// Modal functionality for "Ohjeet" button
+document.addEventListener("DOMContentLoaded", () => {
+  const ohjeBtn = document.getElementById("ohjeBtn");
+  const ohjeetContainer = document.getElementById("ohjeetContainer");
+  const closeModal = document.getElementById("closeModal");
+
+  // Show modal when "Ohjeet" button is clicked
+  ohjeBtn.addEventListener("click", () => {
+    ohjeetContainer.classList.remove("hidden");
+  });
+
+  // Close modal when the close button is clicked
+  closeModal.addEventListener("click", () => {
+    ohjeetContainer.classList.add("hidden");
+  });
+
+  // Close modal when the ESC key is pressed
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    ohjeetContainer.classList.add("hidden");
+  }
+});
+
+// Close modal when the ESC key is pressed
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    ohjeetContainer.classList.add("hidden");
+  }
+});
+
+  // Close modal when clicking outside the modal content
+  window.addEventListener("click", (event) => {
+    if (event.target === ohjeetContainer) {
+      ohjeetContainer.classList.add("hidden");
+    }
   });
 });
+
+const texts = [
+    "Voit valita Topics -valikosta arvattavan sanan pituuden mukaisesti 4-,5- tai 6- kirjainta, tai valita kaikki sanat. ",
+    "Settings- valikosta voit valita teemaksi light/dark mode. Valittu teema pysyy kunnes valitset sen uudelleen.",
+    "Näppäimistöstä voit syöttää kirjaimia arvattavan sanan laatikoihin: punainen delete-näppäin pyyhkii ja vihreällä enter-näppäimellä voit lähettää arvauksen.",
+    "Arvauksesi ei tarvitse olla heti oikea sana, voit esimerkiksi syöttää kirjaimia järjestyksessä jolloin saat selville mitä kirjaimia sanassa ei ole.",
+    "Kirjaimen laatikko muuttuu keltaiseksi, jos arvattu kirjain on oikea mutta väärässä kohdassa.",
+    "Kirjaimen laatikko muuttuu vihreäksi, jos arvattu kirjain on oikea ja oikeassa kohdassa.",
+    "Kirjaimen laatikko sekä näppäimistön kirjain muuttuvat harmaaksi, jos arvattua kirjainta ei ole arvattavassa sanassa.",
+    "Jos kirjaimen laatikon väri ei muutu, arvattu kirjain on arvattu jo vähintään kerran eikä sitä ole näin montaa arvattavassa sanassa.",
+    "Tehtyäsi arvauksen tulee uusi rivi laatikoita joihin tehdään uusi arvaus: voit verrata näiden laatikoiden sisältöjä.",
+    "Kun arvauksia on tehty useampia ja laatikkorivejä on monta päällekkäin, voit scrollata näitä ylös-alas tarkistaen edellisiä arvauksia.",
+    "Voit tallentaa sanan ja sen käännöksen myöhempää tarkastelua varten Saved words näkymän listaan arvattuasi oikein.",
+    "Halutessasi tyhjentää tallennettujen sanojen listan, paina empty list- painiketta listan alla."
+];
+
+// Reference to the text element
+const puheTeksti = document.getElementById('puheTeksti');
+
+// Counter to keep track of current text index
+let currentTextIndex = 0;
+let intervalId; // to hold the interval ID for pausing
+let isPaused = false; // to indicate if the carousel is paused
+
+// Function to update the text
+function updateText() {
+  puheTeksti.textContent = texts[currentTextIndex];
+}
+
+// Function to start the carousel
+function startCarousel() {
+  intervalId = setInterval(() => {
+    currentTextIndex = (currentTextIndex + 1) % texts.length; // Loop through texts
+    updateText();
+  }, 4500); // Change text every 4.5 seconds
+}
+
+// Pause functionality
+document.getElementById('pauseButton').addEventListener('click', function() {
+  if (!isPaused) {
+    clearInterval(intervalId);
+    intervalId = null; // Reset intervalId to indicate paused
+    this.textContent = ">"; // Change icon to ">" when paused
+  } else {
+    startCarousel(); // Resume the carousel
+    this.textContent = "||"; // Change icon back to "||" when running
+  }
+  isPaused = !isPaused; // Toggle the paused state
+});
+
+// Back button functionality
+document.getElementById('backButton').addEventListener('click', function() {
+  currentTextIndex = (currentTextIndex - 1 + texts.length) % texts.length; // Go back
+  updateText();
+});
+
+// Next button functionality
+document.getElementById('nextButton').addEventListener('click', function() {
+  currentTextIndex = (currentTextIndex + 1) % texts.length; // Go forward
+  updateText();
+});
+
+// Initialize the carousel on page load
+startCarousel();
+
 
 
 // ***TOPICS SELECT***
@@ -449,11 +566,15 @@ function disableKey(letter, color) {
 // Function to be called on win
 function win() {
     const translation = translations[currentWord.toLowerCase()];
-    const save = confirm(`You have guessed right! The word is "${currentWord}", which means "${translation}" in Finnish. Do you want to save the word?`);
+    const save = confirm(`Arvasit oikein! \u{1F44F}\u{1F929} Sana oli "${currentWord}", joka on "${translation}" suomeksi. Haluatko tallentaa sanan?`);
+    //LOCALSTORAGE PISTEIDEN TALLENNUS
+let savedPoints = parseInt(localStorage.getItem("game2Count")) || 0;
+savedPoints++;
+localStorage.setItem("game2Count", savedPoints);
     
     if (save) {
         addSavedList(currentWord, translation); // Save the word in localStorage
-        alert('Word saved!');
+        alert('Sana tallennettu!');
     }
     
     newGame(); // Start a new game after winning

@@ -9,69 +9,60 @@
 <body>
     <div class="grid-container">
         
-          <nav class="navbar">
-            <div class="branding">
-                <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
-            </div>
-            <!--Hamburger-->
-            <label for="input-hamburger" class="hamburger"></label>
-            <input type="checkbox" id="input-hamburger" hidden>
-            <ul class="menu">
-                <li><a href="./index.html" class="menu-link">Aloitus</a></li>
-                <li class="has-dropdown">
-                    <a href="#" class="menu-link" id="menuTopics">Pelit
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="./searchWord.html" class="menu-link" id="game1">Löydä sana</a></li>
-                        <li><a href="./guessWord.html" class="menu-link" id="game2">Arvaa sana</a></li>               
-                    </ul>
-                </li>
+      <nav class="navbar">
+        <div class="branding">
+            <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
+        </div>
+        <!--Hamburger-->
+        <label for="input-hamburger" class="hamburger"></label>
+        <input type="checkbox" id="input-hamburger" hidden>
+        <ul class="menu">
+            <li><a href="./index.html" class="menu-link">Aloitus</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="menu-link" id="menuTopics">Pelit
+                    <span class="arrow"></span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="./searchWord.html" class="menu-link" id="game1">Löydä sana</a></li>
+                    <li><a href="./guessWord.html" class="menu-link" id="game2">Arvaa sana</a></li>               
+                </ul>
+            </li>
 
-                <!--SAVED WORDS-->
-                <li><a href="./saved.html" class="menu-link">Koostesivu</a></li>
+            <!--SAVED WORDS-->
+            <li><a href="./kooste.html" class="menu-link">Koostesivu</a></li>
 
-                <!--SETTINGS-->
-                <li class="has-dropdown">
-                    <a href="#" class="menu-link">Asetukset
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="submenu" id="menuSettings">
-                        <select id="theme-selector"> 
-                          <option value="light">Light mode       </option>
-                          <option value="dark">Dark mode         </option>
-                        </select>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+            <!--SETTINGS-->
+            <li>
+                    <div id="toggle">
+                        <i class="indicator"></i>
+                    </div>
+            </li>
+        </ul>
+    </nav>
         <header id="header">
-          <div id="gamePoints">
-          
-            <div id="game1">
-              <h3>Löydä sana</h3>
-                <p>Sanoja löydetty yhteensä: <span id="game1Count">0</span></p>
-                <button class="del" id="delBtn"><embed src="./images/garbage-svgrepo-com.svg" id="trash" />Reset</button>
-            </div>
-            <div id="game2">
-              <h3>Arvaa sana</h3>
-                <p>Sanoja arvattu yhteensä: <span id="game2Count">0</span></p>
-                <button class="del" id="delBtn"><embed src="./images/garbage-svgrepo-com.svg" id="trash" />Reset</button>
-            </div>
-            <div id="game3">
-              <h3>Hangman</h3>
-                <p>Sanoja arvattu yhteensä: <span id="game3Count">0</span></p>
-                <button class="del" id="delBtn"><embed src="./images/garbage-svgrepo-com.svg" id="trash" />Reset</button>
-            </div>
-            
-          </div>
-          
+        <button class="button" id="pisteetBtn">Pisteet</button>
+        <button class="button" id="savedBtn">Tallennetut sanat</button>
         </header>
-        
-      <main id="main-container">
-        
+        <div id="otsikko">
+          <h3>PISTEET</h3>
+        </div>
+       <main id="main-container">
+
+          <div id="gamePoints">
+            <div id="Game1">
+              <h3>Löydä sana</h3>
+              <p>Sanoja löydetty yhteensä: <span id="game1Count">0</span></p>
+              <button class="del" id="delBtn1"><embed src="./images/garbage-svgrepo-com.svg" id="trash" />Reset</button>
+            </div>
+            <div id="Game2">
+              <h3>Arvaa sana</h3>
+              <p>Sanoja arvattu yhteensä: <span id="game2Count">0</span></p>
+              <button class="del" id="delBtn2"><embed src="./images/garbage-svgrepo-com.svg" id="trash" />Reset</button>
+            </div>
+         
+          </div>
+        </main>
       
-      </main>
     </div>
 
     <script src="./js/kooste.js" defer></script>

@@ -9,45 +9,39 @@
 <body>
     <div class="content">
 
-        <nav class="navbar">
-         <div class="branding">
-           <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
-         </div>
-         <!--Hamburger-->
-         <label for="input-hamburger" class="hamburger"></label>
-         <input type="checkbox" id="input-hamburger" hidden>
-         <ul class="menu">
-           <li><a href="./index.html" class="menu-link">Aloitus</a></li>
-           <li class="has-dropdown">
-             <a href="#" class="menu-link" id="menuTopics">Pelit
-               <span class="arrow"></span>
-             </a>
-             <ul class="submenu">
-               <li><a href="./searchWord.html" class="menu-link" id="game1">Löydä sana</a></li>
-               <li><a href="./guessWord.html" class="menu-link" id="game2">Arvaa sana</a></li>
-             </ul>
-           </li>
+      <nav class="navbar">
+        <div class="branding">
+            <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
+        </div>
+        <!--Hamburger-->
+        <label for="input-hamburger" class="hamburger"></label>
+        <input type="checkbox" id="input-hamburger" hidden>
+        <ul class="menu">
+            <li><a href="./index.html" class="menu-link">Aloitus</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="menu-link" id="menuTopics">Pelit
+                    <span class="arrow"></span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="./searchWord.html" class="menu-link" id="game1">Löydä sana</a></li>
+                    <li><a href="./guessWord.html" class="menu-link" id="game2">Arvaa sana</a></li>               
+                </ul>
+            </li>
 
-           <!--SAVED WORDS-->
-           <li><a href="./saved.html" class="menu-link">Koostesivu</a></li>
+            <!--SAVED WORDS-->
+            <li><a href="./kooste.html" class="menu-link">Koostesivu</a></li>
 
-           <!--SETTINGS-->
-           <li class="has-dropdown">
-             <a href="#" class="menu-link">Settings
-               <span class="arrow"></span>
-             </a>
-             <ul class="submenu" id="menuSettings">
-               <select id="theme-selector">
-                 <option value="light">Light mode </option>
-                 <option value="dark">Dark mode </option>
-               </select>
-             </ul>
-           </li>
-         </ul>
-       </nav>
+            <!--SETTINGS-->
+            <li>
+                    <div id="toggle">
+                        <i class="indicator"></i>
+                    </div>
+            </li>
+        </ul>
+    </nav>
        
         <header>
-          <select id="topicsBtn">
+          <select class="button" id="topicsBtn">
             <option value="" disabled selected>Valitse aihe</option> <!-- Oletusarvoinen teksti -->
             <option value="allWords" id="allWords">Kaikki sanat</option>
             <option value="four" id="4letterWords">4 kirjainta</option>
@@ -73,6 +67,25 @@
             </div> <!--Keyboard for typing-->
         </main>
     </div>
+        <!-- Modaali Ohjeet -->
+  <div id="ohjeetContainer" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal" id="xBtn">&times;</span>
+      <div id="carousel">
+        <div class="puhekupla">
+  <div class="text-container">
+    <p id="puheTeksti">Settings- valikosta voit valita light/dark mode teemojen välillä.</p>
+  </div>
+        <div class="carousel-buttons">
+          <button id="backButton">←</button>
+          <button id="pauseButton">||</button>
+          <button id="nextButton">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
     <script src="./js/guessWord.js" defer></script>
 </body>
 </html>

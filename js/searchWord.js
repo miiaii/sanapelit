@@ -4,13 +4,13 @@
 
 const allWords = [ 
     "APPLE", "HOUSE", "WATER", "MOUSE", "GRASS", "CHAIR", "TABLE", "BREAD", "PLANE", 
-    "PENCIL", "CLOUD", "SCHOOL", "CANDLE", "HORSE", "DOOR", "LIGHT", "SHOES", "SMILE", 
+    "PENCIL", "SCHOOL", "CANDLE", "HORSE", "DOOR", "LIGHT", "SHOES", "SMILE", 
     "TRAIN", "BOOK", "CAR", "DOG", "CAT", "FISH", "BIRD", "TREE", "SUN", "MOON", 
     "STAR", "MILK", "CHEESE", "JUICE", "PLATE", "CLOCK", "RIVER", "BRIDGE", "WINDOW", 
-    "BED", "TOWEL", "FORK", "SPOON", "KNIFE", "GLASS", "CUP", "SHEEP", "CANDLE", 
+    "BED", "TOWEL", "FORK", "SPOON", "KNIFE", "GLASS", "CUP", "SHEEP", 
     "DUCK", "FIRE", "SNOW", "RAIN", "WIND", "BRUSH", "BOTTLE", "STREET", "MARKET", 
-    "COOKIE", "BUTTON", "PAPER", "PENCIL", "FLOWER", "CANDLE", "JACKET", "SHADOW", 
-    "CANDLE", "SAND", "CLOUD", "PEPPER", "ORANGE", "BANANA", "STRAW", "BRANCH"
+    "COOKIE", "BUTTON", "PAPER", "FLOWER", "JACKET", "SHADOW", 
+    "SAND", "CLOUD", "PEPPER", "ORANGE", "BANANA", "STRAW", "BRANCH"
 ];
 
 const translations = {
@@ -120,25 +120,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ***THEME***
+//THEMES
+
+const toggle = document.getElementById("toggle");
+toggle.onclick = function() {
+ toggle.classList.toggle("active");
+}
 
 // To set theme on page load based on localStorage
-document.addEventListener("DOMContentLoaded", function() {
-    const themeSelector = document.getElementById('theme-selector');
-    const savedTheme = localStorage.getItem('theme');
-  
-    if (savedTheme) {
-      document.body.className = savedTheme; // Apply the saved theme class
-      themeSelector.value = savedTheme; // Set the selector to match the saved theme
-    }
-  
-    // Change theme when user selects a new one
-    themeSelector.addEventListener('change', function() {
-      const selectedTheme = themeSelector.value;
-      document.body.className = selectedTheme; // Apply the theme class
-      localStorage.setItem('theme', selectedTheme); // Save the selected theme to localStorage
-    });
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("toggle");
+  const body = document.body;
+  const savedTheme = localStorage.getItem("theme");
+
+  // Apply the saved theme on page load
+  if (savedTheme) {
+    body.className = savedTheme; // Apply the saved theme class
+    toggle.classList.toggle("active", savedTheme === "dark"); // Update toggle state
+  }
+
+  // Toggle theme when user clicks on the toggle
+  toggle.onclick = function () {
+    const isDarkMode = body.classList.toggle("dark"); // Toggle the "dark" class
+    body.classList.toggle("light", !isDarkMode); // Ensure "light" class is also toggled
+    toggle.classList.toggle("active", isDarkMode); // Update toggle state
+
+    // Save the selected theme to localStorage
+    const selectedTheme = isDarkMode ? "dark" : "light";
+    localStorage.setItem("theme", selectedTheme);
+  };
+});
+
+
 
 
 let words = []; //Arvottavat sanat; 6kpl/ peli;
@@ -338,13 +351,13 @@ function endSelection() {
     points.textContent = counter; // Päivitetään näkyviin
 
 //LOCALSTORAGE PISTEIDEN TALLENNUS
-    let savedPoints = parseInt(localStorage.getItem("game3Count")) || 0;
+    let savedPoints = parseInt(localStorage.getItem("game1Count")) || 0;
     savedPoints++;
-    localStorage.setItem("game3Count", savedPoints);
+    localStorage.setItem("game1Count", savedPoints);
 
     // Näytetään "+1 sana" -animaatio
     setTimeout(() => {
-      showNotification("+1 SANA");
+      showNotification("+1 SANA \u{1F929}");
     }, 10); // Pieni viive, että alert sulkeutuu ensin
 
     // Tarkistetaan, onko kaikki sanat löydetty
@@ -417,65 +430,107 @@ function showGameOverModal() {
 }
 
 
-//PISTEET MODAL
 
 
+  
+//OHJEET
+
+// Modal functionality for "Ohjeet" button
 document.addEventListener("DOMContentLoaded", () => {
-  const infoButton = document.getElementById('infoBtn');
+  const ohjeBtn = document.getElementById("ohjeBtn");
+  const ohjeetContainer = document.getElementById("ohjeetContainer");
+  const closeModal = document.getElementById("closeModal");
 
-  // Luodaan modaali ja sen sisältö
-  const modal = document.createElement('div');
-  modal.id = 'infoModal';
-  modal.classList.add('modal');
-  modal.style.display = 'none'; // Piilotetaan modaali oletuksena
-
-  const modalContent = document.createElement('div');
-  modalContent.classList.add('modal-content');
-  modalContent.id = 'infoModalContent';
-
-  // Luodaan sulje-painike oikeaan yläkulmaan
-  const closeButton = document.createElement('span');
-  closeButton.textContent = '×'; // Unicode-merkki "x"
-  closeButton.classList.add('close-button');
-
-  // Lisätään teksti ja löydettyjen sanojen määrä
-  const completedGamesText = document.createElement('p');
-  completedGamesText.textContent = 'Sanoja löydetty yhteensä: ';
-
-  const completedGamesCount = document.createElement('span');
-
-  // Kootaan modaali
-  modalContent.appendChild(closeButton);
-  modalContent.appendChild(completedGamesText);
-  modalContent.appendChild(completedGamesCount);
-
-  modal.appendChild(modalContent);
-  document.body.appendChild(modal);
-
-  // Näytä modaali vain nappia painamalla
-  infoButton.addEventListener('click', () => {
-    let completedGames = parseInt(localStorage.getItem("game3Count")) || 0;
-    completedGamesCount.textContent = completedGames; // Päivitä sisältö
-    modal.style.display = 'flex'; // Näytä modaali
+  // Show modal when "Ohjeet" button is clicked
+  ohjeBtn.addEventListener("click", () => {
+    ohjeetContainer.classList.remove("hidden");
   });
 
-  // Sulje modaali ulkopuolelle klikattaessa
-  window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
+  // Close modal when the close button is clicked
+  closeModal.addEventListener("click", () => {
+    ohjeetContainer.classList.add("hidden");
+  });
+
+  
+  // Close modal when the ESC key is pressed
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    ohjeetContainer.classList.add("hidden");
+  }
+});
+
+// Close modal when the ESC key is pressed
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    ohjeetContainer.classList.add("hidden");
+  }
+});
+
+  // Close modal when clicking outside the modal content
+  window.addEventListener("click", (event) => {
+    if (event.target === ohjeetContainer) {
+      ohjeetContainer.classList.add("hidden");
     }
-  });
-
-  // Sulje modaali ESC-näppäimellä
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      modal.style.display = 'none';
-    }
-  });
-
-  // Sulje modaali "x"-painiketta klikatessa
-  closeButton.addEventListener('click', () => {
-    modal.style.display = 'none';
   });
 });
+
+
+
+const texts = [
+   '1Etsi ruudukosta listalla näkyvät etsittävät sanat.',
+'Sanat voivat olla ruudukossa vasemmalta oikealle, oikealta vasemmalle, ylhäältä alas tai alhaalta ylöspäin.',
+'Sana valitaan vetämällä hiirellä (tai sormella) sanan kirjaimien ylitse: valittujen kirjainten taustaväri muuttuu keltaiseksi.',
+'Jos valittu sana on oikea, kirjainten taustaväri muuttuu vihreäksi ja saat ilmoituksen löytämästäsi sanasta ja mikä se on suomeksi.',
+'Jokaisesta löydetystä sanasta saa aina yhden pisteen ja pelin yläkulmasta näet kuinka paljon olet saanut meneillään olevassa pelissä pisteitä. Pistelaskuri nollaantuu aina uuden pelin alkaessa, mutta voit nähdä kaikki pelatuista peleistä saamasi pisteet koostesivulla.',
+'Pelissä on kerrallaan kuusi sanaa löydettävänä jonka jälkeen näet kaikki löytämäsi sanat ja voit aloittaa uuden pelin. Halutessasi voit myös painaa alhaalla sijaitsevaa uusi peli- painiketta ja aloittaa uuden pelin uusilla sanoilla.'
+];
+
+// Reference to the text element
+const puheTeksti = document.getElementById('puheTeksti');
+
+// Counter to keep track of current text index
+let currentTextIndex = 0;
+let intervalId; // to hold the interval ID for pausing
+let isPaused = false; // to indicate if the carousel is paused
+
+// Function to update the text
+function updateText() {
+  puheTeksti.textContent = texts[currentTextIndex];
+}
+
+// Function to start the carousel
+function startCarousel() {
+  intervalId = setInterval(() => {
+    currentTextIndex = (currentTextIndex + 1) % texts.length; // Loop through texts
+    updateText();
+  }, 4500); // Change text every 4.5 seconds
+}
+
+// Pause functionality
+document.getElementById('pauseButton').addEventListener('click', function() {
+  if (!isPaused) {
+    clearInterval(intervalId);
+    intervalId = null; // Reset intervalId to indicate paused
+    this.textContent = ">"; // Change icon to ">" when paused
+  } else {
+    startCarousel(); // Resume the carousel
+    this.textContent = "||"; // Change icon back to "||" when running
+  }
+  isPaused = !isPaused; // Toggle the paused state
+});
+
+// Back button functionality
+document.getElementById('backButton').addEventListener('click', function() {
+  currentTextIndex = (currentTextIndex - 1 + texts.length) % texts.length; // Go back
+  updateText();
+});
+
+// Next button functionality
+document.getElementById('nextButton').addEventListener('click', function() {
+  currentTextIndex = (currentTextIndex + 1) % texts.length; // Go forward
+  updateText();
+});
+
+// Initialize the carousel on page load
+startCarousel();
   

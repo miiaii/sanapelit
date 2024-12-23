@@ -9,46 +9,40 @@
 <body>
     <div class="grid-container">
         
-          <nav class="navbar">
-            <div class="branding">
-                <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
-            </div>
-            <!--Hamburger-->
-            <label for="input-hamburger" class="hamburger"></label>
-            <input type="checkbox" id="input-hamburger" hidden>
-            <ul class="menu">
-                <li><a href="./index.html" class="menu-link">Aloitus</a></li>
-                <li class="has-dropdown">
-                    <a href="#" class="menu-link" id="menuTopics">Pelit
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="./searchWord.html" class="menu-link" id="game1">Löydä sana</a></li>
-                        <li><a href="./guessWord.html" class="menu-link" id="game2">Arvaa sana</a></li>               
-                    </ul>
-                </li>
+      <nav class="navbar">
+        <div class="branding">
+            <h2><a href="#" class="branding-logo">Sanapelit</a></h2>
+        </div>
+        <!--Hamburger-->
+        <label for="input-hamburger" class="hamburger"></label>
+        <input type="checkbox" id="input-hamburger" hidden>
+        <ul class="menu">
+            <li><a href="./index.html" class="menu-link">Aloitus</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="menu-link" id="menuTopics">Pelit
+                    <span class="arrow"></span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="./searchWord.html" class="menu-link" id="game1">Löydä sana</a></li>
+                    <li><a href="./guessWord.html" class="menu-link" id="game2">Arvaa sana</a></li>               
+                </ul>
+            </li>
 
-                <!--SAVED WORDS-->
-                <li><a href="./saved.html" class="menu-link">Koostesivu</a></li>
+            <!--SAVED WORDS-->
+            <li><a href="./kooste.html" class="menu-link">Koostesivu</a></li>
 
-                <!--SETTINGS-->
-                <li class="has-dropdown">
-                    <a href="#" class="menu-link">Asetukset
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="submenu" id="menuSettings">
-                        <select id="theme-selector"> 
-                          <option value="light">Light mode       </option>
-                          <option value="dark">Dark mode         </option>
-                        </select>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+            <!--SETTINGS-->
+            <li>
+                    <div id="toggle">
+                        <i class="indicator"></i>
+                    </div>
+            </li>
+        </ul>
+    </nav>
         <header id="header">
            <div id="topArea">
-              <button class="button" id="infoBtn">
-               PISTEET
+              <button class="button" id="ohjeBtn">
+               OHJEET
                </button>
               <div id="counter">
                <p>LÖYDETTY: <span id="score">0</span></p>
@@ -76,14 +70,34 @@
         <div id="notificationContainer"> <!-- ilmoitukset; +1 sana löydetty -->
         </div>
         <div id="gameOverModal" class="modal"> <!--ilmoituslaatikko; kaikki sanat löydetty -->
-            <div class="modal-content">
-                <h4>HIENOA, LÖYSIT KAIKKI SANAT!</h4>
+            <div class="modal-content" id="overContent">
+               <h4>HIENOA, LÖYSIT KAIKKI SANAT! &#x1F929;&#x1F44F;</h4>
                 <ul id="wordsModal"></ul>
                 <button id="yesButton">UUSI PELI</button>
             </div>
         </div>
     </main>
+            <!-- Modaali Ohjeet -->
+  <div id="ohjeetContainer" class="modal hidden">
+    <div class="modal-content" id="ohjeetContent">
+      <span id="closeModal" id="xBtn">&times;</span>
+      <div id="carousel">
+        <div class="puhekupla">
+  <div class="text-container">
+    <p id="puheTeksti">Settings- valikosta voit valita light/dark mode teemojen välillä.</p>
+  </div>
+        <div class="carousel-buttons">
+          <button id="backButton">←</button>
+          <button id="pauseButton">||</button>
+          <button id="nextButton">→</button>
+        </div>
+      </div>
     </div>
+  </div>
+  </div>
+
+    </div>
+    
 
     <script src="./js/searchWord.js" defer></script>
 </body>

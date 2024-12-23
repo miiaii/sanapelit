@@ -20,7 +20,7 @@
 
 
 /*Light mode*/
-body:has(option[value="light"]:checked){
+body.light{
     --background-color: #fff;
     --text-color: black;
     --box-color: #fff;
@@ -30,7 +30,7 @@ body:has(option[value="light"]:checked){
   }
   
   /*Dark mode*/
-  body:has(option[value="dark"]:checked){
+  body.dark{
     --background-color: black;
     --text-color: #e2e2e2;
     --box-color: lightgray;
@@ -40,17 +40,65 @@ body:has(option[value="light"]:checked){
     
   }
   
-  
-  select{
-    left:0;
-    margin: 0em 1em;
-    padding:15px;
-    background-color:FFFFF;
-    border-radius: 0.5em;
-    font-size: 1rem;
+  #toggle{
+    position: relative;
+    display: block;
+    margin: 1em;
+    width: 4em;
+    height: 2em;
+    border-radius: 2em;
+    background: #eaeaea;
+    transition: 0.5s;
     cursor: pointer;
+    box-shadow: inset 0 2px 60x rgba(0, 0, 0, 0.1),
+    inset 0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.05);
+
+  }
+
+  #toggle.active{
+    background: #222;
+    box-shadow: inset 0 2px 60x rgba(0, 0, 0, 0.1),
+                inset 0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.05);
+  }   
+
+  #toggle .indicator { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+    border-radius: 50%;
+    transform: scale(0.9);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2),
+                inset 0 4px 4px rgba(255, 255, 255, 1),
+                inset 0 -4px 4px rgba(255, 255, 255, 1);
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
+  #toggle .indicator::before {
+    content: "\263C";  /* Unicode for the sun icon (☀️) */
+  }
+  
+  #toggle.active .indicator { 
+    left: 2em;
+    background: linear-gradient(to bottom, #333, #222);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
+                inset 0 4px 4px rgba(255, 255, 255, 0.2),
+                inset 0 -4px 4px rgba(255, 255, 255, 0.2);
+  }
+  
+  #toggle.active .indicator::before {
+  
+    content: "\263D";  /* Unicode for the moon icon (🌙) */
+  }
+  
+
 
   
 html, body{
@@ -91,21 +139,6 @@ html, body{
 }
 
 
-#back{
-    grid-area: Back;
-    padding: 0.8em;
-    background-color: var(--box-color);
-    box-shadow: 
-      0px 0px 0.7px 0.2px hsl(0deg 0% 0% / 0.6),
-      0px 1px 1.5px 1px hsl(0deg 0% 0% / 0.2),
-      inset 0px 0px 5px 1px hsl(0deg 0% 0% / 0.3)
-    ;
-    border: 0.1px solid rgba(0,0,0,0.7);
-    border-radius: 0.5em;
-    margin: 1.5em;
-
-}
-
 
 .button {
   display: flex;
@@ -143,6 +176,13 @@ html, body{
     overflow: auto;
 }   
 
+header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0.5rem 0;
+}
 
 
 /*SAVED WORDS*/
@@ -270,22 +310,22 @@ main{
 }
 
 
-/* MENU */
+/*NAV*/
 
 .navbar{
     grid-area: navbar;
     background-color: var(--primary);
-    box-shadow: 0px 0px 5px 0.5px var(--shadow-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 1em 0.5em 1.5em;
-    border-bottom:1px solid var(--shadow-color);
+    padding: 0em 1em 0em 1.5em;
+    border-bottom:1px solid black ;
 }
 
+/* MENU */
 
 .branding-logo{
-    color: white;
+    color: var(--box-color);
     font-size: calc(1rem + 1vw);
     text-decoration: none;
 }
@@ -303,7 +343,7 @@ main{
 .menu li a{
     display: block;
     text-decoration: none;
-    color: white;
+    color: var(--box-color);
     padding: 1em 1.5em;
     font-size: 1.2rem;
 }
@@ -338,7 +378,7 @@ main{
 .submenu {
     position: absolute;
     right: 0;  /* right value 0, right side is on same level than parent */
-    background-color: #2e2e2e;
+    background-color: var(--primary);
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
     white-space: nowrap; /* Disable line breaks; text on one row*/
     padding: 0.7em 0; /*padding vertical and horizontal*/
@@ -356,8 +396,8 @@ main{
 
 
 .submenu > li > a {
-    padding: 0.7em 1.5em; /*padding vertical and horizontal (text)*/
-    color: white;
+    padding: 1em 1.5em; /*padding vertical and horizontal (text)*/
+    color: var(--box-color);
     text-decoration: none;
     font-size: 1.1rem;
 }
@@ -365,9 +405,10 @@ main{
 .menu > li:hover>a, .submenu > li:hover>a {
     background-color: rgba(139, 139, 139, 0.2); /* hover nav links & submenu links; lighter background color */
     color: var(--hover-color);
-    font-style: italic;
-    box-shadow:inset 0px 0px 10px 5px rgba(0, 0, 0, 0.7);
+    box-shadow:inset 0px 0px 10px 5px var(--hover-color);
 }
+
+
 
 
 /*Responsive NAV*/
@@ -499,12 +540,6 @@ main{
 
 }
 
-#savedWordsList{
-    
-    min-width: 60vw;
-    min-height: 10vh;
-
-}
 
 
 .hahmo-container {
