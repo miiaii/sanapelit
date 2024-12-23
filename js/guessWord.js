@@ -303,6 +303,20 @@ document.addEventListener("DOMContentLoaded", () => {
     ohjeetContainer.classList.add("hidden");
   });
 
+  // Close modal when the ESC key is pressed
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    ohjeetContainer.classList.add("hidden");
+  }
+});
+
+// Close modal when the ESC key is pressed
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    ohjeetContainer.classList.add("hidden");
+  }
+});
+
   // Close modal when clicking outside the modal content
   window.addEventListener("click", (event) => {
     if (event.target === ohjeetContainer) {
