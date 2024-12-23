@@ -74,11 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function() {
   const games = [
     {
-      name: "Löydä sana \u{1F575}",
+      name: "LÖYDÄ SANA \u{1F575}",
       link: "./searchWord.html"
         },
     {
-      name: "Arvaa sana \u{1F914}",
+      name: "ARVAA SANA \u{1F914}",
       link: "./guessWord.html"
         }
     ];
