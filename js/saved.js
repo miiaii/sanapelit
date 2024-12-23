@@ -36,24 +36,35 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ***THEME***
+//THEMES
+
+const toggle = document.getElementById("toggle");
+toggle.onclick = function() {
+ toggle.classList.toggle("active");
+}
 
 // To set theme on page load based on localStorage
-document.addEventListener("DOMContentLoaded", function() {
-  const themeSelector = document.getElementById('theme-selector');
-  const savedTheme = localStorage.getItem('theme');
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("toggle");
+  const body = document.body;
+  const savedTheme = localStorage.getItem("theme");
 
+  // Apply the saved theme on page load
   if (savedTheme) {
-    document.body.className = savedTheme; // Apply the saved theme class
-    themeSelector.value = savedTheme; // Set the selector to match the saved theme
+    body.className = savedTheme; // Apply the saved theme class
+    toggle.classList.toggle("active", savedTheme === "dark"); // Update toggle state
   }
 
-  // Change theme when user selects a new one
-  themeSelector.addEventListener('change', function() {
-    const selectedTheme = themeSelector.value;
-    document.body.className = selectedTheme; // Apply the theme class
-    localStorage.setItem('theme', selectedTheme); // Save the selected theme to localStorage
-  });
+  // Toggle theme when user clicks on the toggle
+  toggle.onclick = function () {
+    const isDarkMode = body.classList.toggle("dark"); // Toggle the "dark" class
+    body.classList.toggle("light", !isDarkMode); // Ensure "light" class is also toggled
+    toggle.classList.toggle("active", isDarkMode); // Update toggle state
+
+    // Save the selected theme to localStorage
+    const selectedTheme = isDarkMode ? "dark" : "light";
+    localStorage.setItem("theme", selectedTheme);
+  };
 });
 
 

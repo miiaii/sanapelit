@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+//THEMES
+
 const toggle = document.getElementById("toggle");
 toggle.onclick = function() {
  toggle.classList.toggle("active");
@@ -65,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("theme", selectedTheme);
   };
 });
+
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
