@@ -253,27 +253,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//THEMES
+// THEMES
 
 const toggle = document.getElementById("toggle");
-toggle.onclick = function() {
- toggle.classList.toggle("active");
-}
 
 // To set theme on page load based on localStorage
-document.addEventListener("DOMContentLoaded", function () {
-  const toggle = document.getElementById("toggle");
+document.addEventListener("DOMContentLoaded", function() {
   const body = document.body;
   const savedTheme = localStorage.getItem("theme");
 
-  // Apply the saved theme on page load
+  // Apply the saved theme on page load or default to light mode
   if (savedTheme) {
     body.className = savedTheme; // Apply the saved theme class
     toggle.classList.toggle("active", savedTheme === "dark"); // Update toggle state
+  } else {
+    body.classList.add("light"); // Default to light mode
+    localStorage.setItem("theme", "light"); // Save the default theme to localStorage
   }
 
   // Toggle theme when user clicks on the toggle
-  toggle.onclick = function () {
+  toggle.onclick = function() {
     const isDarkMode = body.classList.toggle("dark"); // Toggle the "dark" class
     body.classList.toggle("light", !isDarkMode); // Ensure "light" class is also toggled
     toggle.classList.toggle("active", isDarkMode); // Update toggle state
@@ -283,7 +282,6 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("theme", selectedTheme);
   };
 });
-
 
 //OHJEET
 
