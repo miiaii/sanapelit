@@ -18,7 +18,7 @@ const allWords = [
     "PLANE", "PURPLE", "RAIN", "RAILWAY", "RASPBERRY", "RABBIT", "RED", "ROCK", 
     "ROSE", "SAND", "SCHOOL", "SCOOTER", "SHADOW", "SHEEP", "SHOES", "SMILE", 
     "SNOW", "SOCK", "SPOON", "SQUIRREL", "STRAWBERRY", "STAR", "STREET", 
-    "SUN", "TABLE", "TRAIN", "TRAVEL", "TREE", "TULIP", 
+    "SUN", "TABLE", "TRAIN", "TRAVEL", "TULIP", 
     "TUNNEL", "TIGER", "TOWEL", "UMBRELLA", "WARDROBE", "WATER", "WHALE", "WHITE", "WINDOW", "YELLOW", "ZEBRA"
 ];
 
@@ -144,7 +144,6 @@ const translations = {
   TABLE: "PÖYTÄ",
   TRAIN: "JUNA",
   TRAVEL: "MATKA",
-  TREE: "PUU",
   TULIP: "TULPPAANI",
   TUNNEL: "TUNNELI",
   TIGER: "TIIKERI",
